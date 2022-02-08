@@ -1,0 +1,33 @@
+Install git bash on windows
+
+https://git-scm.com/download/win
+https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
+
+Open cmd and click 
+
+cd C:\Devops_softwares/
+#mkdir git
+#cd git
+#git init
+ls -a
+.git
+
+
+If you want to execute any commands like git related you have to execute from here. otherwise it willnot work because we have not added system varialble yet
+ 
+pwd
+/c/Devops_softwares/git
+
+$ git status
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+ERROR: Because git executable folder not present below
+
+cd ..
+pwd
+/c/Devops_softwares
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
