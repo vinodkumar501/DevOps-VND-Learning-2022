@@ -1,6 +1,59 @@
 https://maven.apache.org/download.cgi
 
 windows install zip file
+
+https://maven.apache.org/download.cgi
 https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
 
+install this maven on 
+C:\Program Files (x86)\Maven
+
+Once done 
+add 
+
+
+
+add path 
+#search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
+#Name: MAvEN_HOME 
+#Path: C:\Program Files (x86)\Maven\apache-maven-3.8.4
+
+
+Once add MAVEN_HOME VARIABLE update same path on "Path" variable till /bin
+#Path: 
+#add : C:\Program Files (x86)\Maven\apache-maven-3.8.4\bin
+
+click on Ok 
+
+open new CMD and check maven version using
+
+mvn 
+mvn -version
+
+C:\Users\vinod>mvn -version
+Apache Maven 3.8.4 (9b656c72d54e5bacbed989b64718c159fe39b537)
+Maven home: C:\Program Files (x86)\Maven\apache-maven-3.8.4
+Java version: 1.8.0_321, vendor: Oracle Corporation, runtime: C:\Program Files (x86)\Java\jdk1.8.0_321\jre
+Default locale: en_IN, platform encoding: Cp1252
+OS name: "windows 11", version: "10.0", arch: "x86", family: "windows"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note:
 linux install tar file
+
+
