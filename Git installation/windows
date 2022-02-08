@@ -1,5 +1,44 @@
-Install git bash on windows
+==================================================== STANDARD WAY OF INSTALLING GIT========================================================
+https://git-scm.com/download/win
+CLICK ON 
+64-bit Git for Windows Setup
 
+https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
+
+Once download copy git.exe to 
+cd C:\Devops_softwares
+mkdir Git
+cd Git
+ls
+Git-2.35.1.2-64-bit.exe
+
+execute it and add "path" to Advnaced system settings --> environment variables
+C:\Devops_softwares\Git
+
+you can execute git commands on anywhere if you add git path to environment variables.
+--> If you want to access git anywhere -> execute
+cd ..
+
+/c
+$ git
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+
+#git status 
+fatal: not a git repository (or any of the parent directories): .git
+
+Note:
+But wherever you want to execute any git related commands you need to initialise using
+
+#git init
+Once intialise is done you will get .git folder
+#ls -a 
+.git
+
+#git status                                          # will work without any issue Install git bash on windows
+
+================================================================================================================
 https://git-scm.com/download/win
 https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
 
@@ -13,21 +52,27 @@ ls -a
 .git
 
 
-If you want to execute any commands like git related you have to execute from here. otherwise it willnot work because we have not added system varialble yet
- 
-pwd
-/c/Devops_softwares/git
 
-$ git status
-On branch master
-No commits yet
-nothing to commit (create/copy files and use "git add" to track)
 
-ERROR: Because git executable folder not present below
 
-cd ..
-pwd
-/c/Devops_softwares
-$ git status
-fatal: not a git repository (or any of the parent directories): .git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
