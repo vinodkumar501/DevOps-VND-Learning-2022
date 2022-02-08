@@ -2,6 +2,10 @@ https://www.oracle.com/downloads/               --- Jdk (for developers)
 https://www.oracle.com/java/technologies/downloads/
 https://www.oracle.com/java/technologies/downloads/#java8-windows
 
+jdk-8u321-windows-i586.exe
+
+download and extract on c folder
+
 
 add path 
 search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
