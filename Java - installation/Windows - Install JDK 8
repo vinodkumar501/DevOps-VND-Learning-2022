@@ -8,16 +8,22 @@ download and extract on c folder
 
 
 add path 
-search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
-Name: JAVA_HOME
-path: C:\Program Files (x86)\Java\jdk1.8.0_321\bin
+#search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
+#Name: JAVA_HOME
+#path: C:\Program Files (x86)\Java\jdk1.8.0_321\bin
+
+Once add JAVA_HOME VARIABLE update same path on 
+#Path: 
+#add : C:\Program Files (x86)\Java\jdk1.8.0_321\bin
 
 click on OK and open CMD and execute
 
-java -version
+#java -version
 
 java version "1.8.0_321"
 Java(TM) SE Runtime Environment (build 1.8.0_321-b07)
 Java HotSpot(TM) Client VM (build 25.321-b07, mixed mode)
+
+If java showing as sth issue java not able to show version or some issue close CMD and and reopen and check
 
 
