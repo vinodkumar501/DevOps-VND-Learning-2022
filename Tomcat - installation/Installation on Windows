@@ -1,0 +1,9 @@
+https://tomcat.apache.org/download-90.cgi
+
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
+
+click on it and copy on specific folder
+
+C:\Devops_softwares\
+and extract it
+C:\Devops_softwares\apache-tomcat-9.0.58
