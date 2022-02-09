@@ -6,9 +6,9 @@ CLICK ON
 https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
 
 Once download copy git.exe to 
-cd C:\Devops_softwares
-mkdir Git
-cd Git
+cd C:\Devops_softwares\
+mkdir Git-3.35.1
+cd Git-3.35.1
 ls
 Git-2.35.1.2-64-bit.exe
 
@@ -37,6 +37,9 @@ Once intialise is done you will get .git folder
 .git
 
 #git status                                          # will work without any issue Install git bash on windows
+
+#git --version
+git version 2.35.1.windows.2
 
 ================================================================================================================
 https://git-scm.com/download/win
