@@ -6,7 +6,8 @@ download link
 
 jdk-8u321-windows-i586.exe
 
-download and extract on C:\Devops_softwares folder
+download and extract on C:\Devops_softwares\java-1.8 folder
+
 java you will get 2 folder 
 jdk
 jre
@@ -15,14 +16,14 @@ add path in windows system
 
 #search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
 #Name: JAVA_HOME                                    # here you need to add only Jdk without bin
-#path: C:\Devops_softwares\Java\jdk1.8.0_321
+#path: C:\Devops_softwares\Java-1.8\jdk1.8.0_321
 
 Once add "JAVA_HOME" VARIABLE update ,add on "Path" variable --> on path we need to add till /bin for both Jdk and Jre
 
 #Path: 
 add :
-#C:\Devops_softwares\Java\jdk1.8.0_321\bin
-#C:\Devops_softwares\Java\jre1.8.0_321\bin
+#C:\Devops_softwares\Java-1.8\jdk1.8.0_321\bin
+#C:\Devops_softwares\Java-1.8\jre1.8.0_321\bin
 
 like on "Path" -->click on New and add jdk and jre paths
 
