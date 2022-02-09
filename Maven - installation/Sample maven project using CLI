@@ -170,6 +170,20 @@ Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexu
 $ ls
 pom.xml  src/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ************************************* ENTIRE PROCESS LOOK LIKE ONCE WE ENTER  mvn archetype:generate *************************************************
 
 https://mkyong.com/maven/how-to-create-a-java-project-with-maven/
