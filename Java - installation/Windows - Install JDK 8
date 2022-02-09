@@ -6,25 +6,25 @@ download link
 
 jdk-8u321-windows-i586.exe
 
-download and extract on c folder
+download and extract on C:\Devops_softwares folder
 java you will get 2 folder 
 jdk
 jre
 
-add path 
+add path in windows system
+
 #search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
-#Name: JAVA_HOME
+#Name: JAVA_HOME                                    # here you need to add only Jdk without bin
 #path: C:\Devops_softwares\Java\jdk1.8.0_321
 
-Once add "JAVA_HOME" VARIABLE update ,same path on "Path" variable --> on path we need to add till /bin
+Once add "JAVA_HOME" VARIABLE update ,add on "Path" variable --> on path we need to add till /bin for both Jdk and Jre
+
 #Path: 
 add :
 #C:\Devops_softwares\Java\jdk1.8.0_321\bin
+#C:\Devops_softwares\Java\jre1.8.0_321\bin
 
 like on "Path" -->click on New and add jdk and jre paths
-
-C:\Devops_softwares\Java\jdk1.8.0_321\bin
-C:\Devops_softwares\Java\jre1.8.0_321\bin
 
 click on OK and open CMD and execute
 
@@ -36,4 +36,4 @@ Java HotSpot(TM) Client VM (build 25.321-b07, mixed mode)
 
 If java showing as sth issue java not able to show version or some issue close CMD and and reopen and check
 
-
+#java
