@@ -1,0 +1,242 @@
+https://mkyong.com/maven/how-to-create-a-java-project-with-maven/
+
+#mvn archetype:generate 
+
+#Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _____________ (Enter)
+
+Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
+1: 1.0-alpha-1
+2: 1.0-alpha-2
+3: 1.0-alpha-3
+4: 1.0-alpha-4
+5: 1.0
+6: 1.1
+7: 1.3
+8: 1.4
+
+#Choose a number: 8: 6   ------------> Enter a number maven-archetype-quickstart version:
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom (2.0 kB at 2.4 kB/s)
+
+#Define value for property 'groupId': ittrack
+#Define value for property 'artifactId': apperture
+#Define value for property 'groupId': ittrack
+#Define value for property 'artifactId': apperture
+#Define value for property 'version' 1.0-SNAPSHOT: : ______ (Enter)
+#Define value for property 'package' ittrack: :______ (Enter)
+Confirm properties configuration:
+groupId: ittrack
+artifactId: apperture
+version: 1.0-SNAPSHOT
+package: ittrack
+ Y: : y
+ 
+ 
+[INFO] BUILD SUCCESS
+
+============
+
+Output:
+
+#cd apperture/
+#ls
+pom.xml  src/
+
+#cd src
+#ls
+main test
+
+The default "main" and "test" folders having .java files
+
+for main folder
+#cd /src/main/java/ittrack
+#ls
+app.java
+
+for test folder
+#cd /src/test/java/ittrack
+AppTest.java
+
+
+Note:
+Maven will take these .java files to .class file after executing mvn compile (during runtime it creates /target folder and place the .class files there)
+
+Need to execute mvn commnad like any ( validateresource, compile,test,build,deploy,install,clean) where pom.xml present otherwise it will fail to execute any maven command
+
+#cd apperture
+#ls
+pom.xml  src/
+
+#mvn compile
+
+$ mvn compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< ittrack:apperture >---------------------------
+[INFO] Building apperture 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ apperture ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Devops_softwares\apperture\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ apperture ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\Devops_softwares\apperture\target\classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.472 s
+[INFO] Finished at: 2022-02-09T12:45:02+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+#It stores .class files on 
+[INFO] Compiling 1 source file to C:\Devops_softwares\apperture\target\classes
+
+#cd /apperture
+#ls target
+classes/  maven-status/
+
+#ls /apperture/target/classes/ittrack
+App.class
+
+#ls /apperture/target/maven-status/maven-compiler-plugin/compile/default-compile
+createdFiles.lst  inputFiles.lst
+
+
+============================================== pom.xml look like ===========================================
+cat pom.xml
+$ cat pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ittrack</groupId>
+  <artifactId>apperture</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>apperture</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+====================================================================================================================================================
+
+
+************************************* ENTIRE PROCESS LOOK LIKE ONCE WE ENTER  mvn archetype:generate *************************************************
+
+https://mkyong.com/maven/how-to-create-a-java-project-with-maven/
+
+#mvn archetype:generate 
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] >>> maven-archetype-plugin:3.2.1:generate (default-cli) > generate-sources @ standalone-pom >>>
+Choose archetype:
+1: remote -> am.ik.archetype:elm-spring-boot-blank-archetype (Blank multi project for Spring Boot + Elm)
+2: remote -> am.ik.archetype:graalvm-blank-archetype (Blank project for GraalVM)
+3: remote -> am.ik.archetype:graalvm-springmvc-blank-archetype (Blank project for GraalVM + Spring MVC)
+-
+-
+-
+3043: remote -> xyz.luan.generator:xyz-generator (-)
+3044: remote -> za.co.absa.hyperdrive:component-archetype (-)
+3045: remote -> za.co.absa.hyperdrive:component-archetype_2.11 (-)
+3046: remote -> za.co.absa.hyperdrive:component-archetype_2.12 (-)
+
+#Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _____________ (Enter)
+
+Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
+1: 1.0-alpha-1
+2: 1.0-alpha-2
+3: 1.0-alpha-3
+4: 1.0-alpha-4
+5: 1.0
+6: 1.1
+7: 1.3
+8: 1.4
+
+#Choose a number: 8: 6   ------------> Enter a number maven-archetype-quickstart version:
+
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom (2.0 kB at 2.4 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/4/maven-archetype-bundles-4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/4/maven-archetype-bundles-4.pom (3.6 kB at 5.0 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetype/maven-archetype/2.0-alpha-5/maven-archetype-2.0-alpha-5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetype/maven-archetype/2.0-alpha-5/maven-archetype-2.0-alpha-5.pom (8.7 kB at 13 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom (23 kB at 35 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar (6.2 kB at 7.9 kB/s)
+Define value for property 'groupId':
+
+#Define value for property 'groupId': ittrack
+#Define value for property 'artifactId': apperture
+#Define value for property 'version' 1.0-SNAPSHOT: : ______ (Enter)
+#Define value for property 'package' ittrack: :______ (Enter)
+Confirm properties configuration:
+groupId: ittrack
+artifactId: apperture
+version: 1.0-SNAPSHOT
+package: ittrack
+ Y: : y
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-quickstart:1.1
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: basedir, Value: C:\Devops_softwares
+[INFO] Parameter: package, Value: ittrack
+[INFO] Parameter: groupId, Value: ittrack
+[INFO] Parameter: artifactId, Value: apperture
+[INFO] Parameter: packageName, Value: ittrack
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] project created from Old (1.x) Archetype in dir: C:\Devops_softwares\apperture
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:03 min
+[INFO] Finished at: 2022-02-09T12:26:18+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
