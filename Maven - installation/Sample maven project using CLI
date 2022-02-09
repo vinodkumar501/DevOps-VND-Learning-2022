@@ -35,11 +35,8 @@ version: 1.0-SNAPSHOT
 package: ittrack
  Y: : y
  
- 
-[INFO] BUILD SUCCESS
-
+ [INFO] BUILD SUCCESS
 ============
-
 Output:
 
 #cd apperture/
@@ -60,7 +57,6 @@ app.java
 for test folder
 #cd /src/test/java/ittrack
 AppTest.java
-
 
 Note:
 Maven will take these .java files to .class file after executing mvn compile (during runtime it creates /target folder and place the .class files there)
@@ -94,7 +90,6 @@ $ mvn compile
 [INFO] Finished at: 2022-02-09T12:45:02+05:30
 [INFO] ------------------------------------------------------------------------
 
-
 #It stores .class files on 
 [INFO] Compiling 1 source file to C:\Devops_softwares\apperture\target\classes
 
@@ -107,7 +102,6 @@ App.class
 
 #ls /apperture/target/maven-status/maven-compiler-plugin/compile/default-compile
 createdFiles.lst  inputFiles.lst
-
 
 ============================================== pom.xml look like ===========================================
 cat pom.xml
@@ -175,8 +169,6 @@ Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexu
 
 $ ls
 pom.xml  src/
-
-
 
 ************************************* ENTIRE PROCESS LOOK LIKE ONCE WE ENTER  mvn archetype:generate *************************************************
 
