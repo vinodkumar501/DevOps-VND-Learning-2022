@@ -1,5 +1,7 @@
 MAVEN ,ANT, GRADLE used for java based projects , .Net use visual studio as build tool
 
+Maven is a Java based project , so If you want to run maven you need to install java as pre=requisite.
+
 https://maven.apache.org/download.cgi
 
 windows install zip file
@@ -36,23 +38,7 @@ Java version: 1.8.0_321, vendor: Oracle Corporation, runtime: C:\Devops_software
 Default locale: en_IN, platform encoding: Cp1252
 OS name: "windows 11", version: "10.0", arch: "x86", family: "windows"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Note:
+=========Note:===========
 linux install tar file
 
 
