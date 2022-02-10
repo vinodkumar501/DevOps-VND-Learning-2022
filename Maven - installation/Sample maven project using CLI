@@ -206,7 +206,8 @@ Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexu
 $ ls
 pom.xml  src/
 
-
+maven will install dependencies from 
+https://mvnrepository.com/artifact/org.apache.maven/maven-project/2.2.1
 
 
 
