@@ -6,6 +6,10 @@ Once execute and provide command like below it will create a sample java projjec
 
 https://mkyong.com/maven/how-to-create-a-java-project-with-maven/
 
+Open "gitbash" 
+
+cd C:\Devops_softwares
+
 #mvn archetype:generate 
 
 #Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _____________ (Enter)
@@ -20,7 +24,7 @@ Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
 7: 1.3
 8: 1.4
 
-#Choose a number: 8: 6   ------------> Enter a number maven-archetype-quickstart version:
+#Choose a number: 8: 6                                    ------------> Enter a number maven-archetype-quickstart version:
 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
 Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom (2.0 kB at 2.4 kB/s)
 
@@ -70,6 +74,7 @@ Need to execute mvn commnad like any ( validateresource, compile,test,build,depl
 pom.xml  src/
 
 #mvn compile
+Once you compile it creates build and as well.
 
 $ mvn compile
 [INFO] Scanning for projects...
@@ -92,15 +97,44 @@ $ mvn compile
 [INFO] Finished at: 2022-02-09T12:45:02+05:30
 [INFO] ------------------------------------------------------------------------
 
+
+-----------------------------------------
+
 #It stores .class files on 
 [INFO] Compiling 1 source file to C:\Devops_softwares\apperture\target\classes
+
+
+on line number 81,85
+It is installing plugin " maven-resources-plugin:2.6:resources " "maven-compiler-plugin:3.1" and saving at target folder
 
 #cd /apperture
 #ls target
 classes/  maven-status/
 
+cd /apperture/target/maven-status/maven-compiler-plugin/compile/default-compile
+
+ls
+createdFiles.lst  inputFiles.lst
+
 #ls /apperture/target/classes/ittrack
 App.class
+
+
+cat App.class
+==============================================================================================================================
+cat App.class
+▒▒▒▒1"
+
+init>()VCodeLineNumberTableLocalVariableTablethis
+                                                 Littrack/App;main([Ljava/lang/String;)Vargs[Ljava/lang/String;
+SourceFilApp.java
+
+
+                Hello World!
+                             !
+ittrack/Appjava/lang/Objectjava/lang/SystemoutLjava/io/PrintStream;java/io/PrintStreamprintln(Ljava/lang/String;)V!      /*▒▒
+==============================================================================================================================
+
 
 #ls /apperture/target/maven-status/maven-compiler-plugin/compile/default-compile
 createdFiles.lst  inputFiles.lst
