@@ -1,35 +1,37 @@
-MAVEN ,ANT, GRADLE used for java based projects , .Net use visual studio as build tool
+"MAVEN ,ANT, GRADLE" used for java based projects , ".Net" use "visual studio" as build tool
 
-Maven is a Java based project , so If you want to run maven you need to install java as pre=requisite.
+Maven is a "Java based project" , so If you want to run maven you need to install java as pre-requisite.
 
-https://maven.apache.org/download.cgi
+Open:
+1.https://maven.apache.org/download.cgi
 
+click on 
 windows install zip file
 
 https://maven.apache.org/download.cgi
 https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
 
-install this maven on 
+install this maven and copy to 
 C:\Devops_softwares\Maven-3.8
 
 Once done 
 
-add path 
-#search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
+2.#Add path to environment variables
+Search for control panel --> advnace system setting --> environment variables --> system varialbe --> new 
 #Name: MAVEN_HOME 
 #Path: C:\Devops_softwares\Maven-3.8\apache-maven-3.8.4
 
-
-Once add MAVEN_HOME VARIABLE update same path on "Path" variable till /bin
+Once add MAVEN_HOME VARIABLE update, Update path on "Path" variable till /bin
 #Path: 
 #add : C:\Devops_softwares\Maven-3.8\apache-maven-3.8.4\bin
 
 click on Ok 
 
-open new CMD and check maven version using
+Open new CMD and check maven version using
 
-mvn 
-mvn -version
+Enter:
+3.mvn 
+  mvn -version
 
 C:\Users\vinod>mvn -version
 Apache Maven 3.8.4 (9b656c72d54e5bacbed989b64718c159fe39b537)
