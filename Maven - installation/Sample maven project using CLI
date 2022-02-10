@@ -1,18 +1,25 @@
 https://www.youtube.com/watch?v=Uo3g_zHk_Io
 
+STEP1:
+1.Goto the path  "C:\Devops_softwares" and "Enter" maven works anywhere becasue we have added path as global
+
+Enter below it creates sample maven project
+
 #mvn archetype:generate 
 
-Once execute and provide command like below it will create a sample java projject include pom.xml and src/ folder
+Once execute and provide command like above it will create a sample java projject include pom.xml and src/ folder
 
 https://mkyong.com/maven/how-to-create-a-java-project-with-maven/
 
 Open "gitbash" 
 
+============================================= STEP1: =============================================
+
 cd C:\Devops_softwares
 
 #mvn archetype:generate 
 
-#Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _____________ (Enter)
+#Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _____________ (Enter) press 1864 or click on Enter simply
 
 Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
 1: 1.0-alpha-1
@@ -42,8 +49,9 @@ package: ittrack
  Y: : y
  
  [INFO] BUILD SUCCESS
-============
-Output:
+
+============================================= STEP2: =============================================
+It creates project  apperture/ like below
 
 #cd apperture/
 #ls
@@ -65,7 +73,7 @@ for test folder
 AppTest.java
 
 Note:
-Maven will take these .java files to .class file after executing mvn compile (during runtime it creates /target folder and place the .class files there)
+Maven will take these .java files to ".class file" after executing mvn compile (during runtime it creates /target folder and place the .class files there)
 
 Need to execute mvn commnad like any ( validateresource, compile,test,build,deploy,install,clean) where pom.xml present otherwise it will fail to execute any maven command
 
@@ -119,9 +127,7 @@ createdFiles.lst  inputFiles.lst
 #ls /apperture/target/classes/ittrack
 App.class
 
-
-cat App.class
-==============================================================================================================================
+=============================================================================================================================
 cat App.class
 ▒▒▒▒1"
 
@@ -133,11 +139,7 @@ SourceFilApp.java
                 Hello World!
                              !
 ittrack/Appjava/lang/Objectjava/lang/SystemoutLjava/io/PrintStream;java/io/PrintStreamprintln(Ljava/lang/String;)V!      /*▒▒
-==============================================================================================================================
 
-
-#ls /apperture/target/maven-status/maven-compiler-plugin/compile/default-compile
-createdFiles.lst  inputFiles.lst
 
 ============================================== pom.xml look like ===========================================
 cat pom.xml
