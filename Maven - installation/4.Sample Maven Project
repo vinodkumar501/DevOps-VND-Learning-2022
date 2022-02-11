@@ -1,0 +1,266 @@
+Goto any path because we have mention maven as global variable it execute anywhere 
+
+Execute
+->mvn archetype:generate 
+
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _______ ( Enter default 1864)
+Choose a number: 8: _______ ( Enter default 8)
+
+Define value for property 'groupId': vinod
+Define value for property 'artifactId': devops
+Define value for property 'version' 1.0-SNAPSHOT: :
+Define value for property 'package' vinod: :
+Confirm properties configuration:
+
+Once Done it creates "devops" folder
+
+tree devops/
+
+ls devops
+
+src/ pom.xml
+
+devops/
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       └── vinod
+    │           └── App.java
+    └── test
+        └── java
+            └── vinod
+                └── AppTest.java
+
+
+By default src code having "main" and "test" folders
+
+Maven will convert ".java" files to ".class" after compile or build
+
+Note:
+Have to execute any maven commnad on pom.xml only . Otherwise maven command will not work
+
+cd devops
+pom.xml  src
+
+--> Execute "mvn compile" or any command
+
+mvn compile
+
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/0.9.10/plexus-languages-0.9.10.pom (4.1 kB at 345 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/6.2/asm-6.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/6.2/asm-6.2.pom (2.9 kB at 419 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5/ow2-1.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5/ow2-1.5.pom (11 kB at 1.4 MB/s)
+
+Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0-M9/qdox-2.0-M9.jar (317 kB at 2.0 MB/s)
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /opt/devops/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.866 s
+[INFO] Finished at: 2022-02-11T03:06:27Z
+[INFO] ------------------------------------------------------------------------
+
+
+It downloads all dependencies from  "https://repo.maven.apache.org" and save into .M2 file
+So it checks from next time on .M2 if packages not available it download from remote
+
+Convert .java files to .class files
+
+/opt/devops/target/classes
+
+tree
+.
+├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── vinod
+│   │           └── App.java
+│   └── test
+│       └── java
+│           └── vinod
+│               └── AppTest.java
+└── target
+    ├── classes
+    │   └── vinod
+    │       └── App.class
+    ├── generated-sources
+    │   └── annotations
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+
+On target
+
+└── target
+    ├── classes
+    │   └── vinod
+    │       └── App.class                                    # created App.class from App.java
+    ├── generated-sources
+    │   └── annotations
+    └── maven-status                                         #it installed plugin
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+
+
+
+mvn lifecycle
+
+validate resource
+compile
+test
+build
+install 
+deploy
+clean
+
+
+#mvn clean 
+
+During runtime mvn will create /target folder on our project . mvn clean will clean the resources which are created on runtime
+
+ls
+pom.xml  src  target
+
+mvn clean 
+
+ mvn clean
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------------< vinod:devops >----------------------------
+[INFO] Building devops 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.pom (5.2 kB at 6.9 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/31/maven-plugins-31.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/31/maven-plugins-31.pom (10 kB at 335 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.jar (30 kB at 762 kB/s)
+[INFO]
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ devops ---
+[INFO] Deleting /opt/devops/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.071 s
+[INFO] Finished at: 2022-02-11T03:16:51Z
+[INFO] ------------------------------------------------------------------------
+
+
+
+
+After "mvn clean" it deletes "target" folder 
+
+ls
+pom.xml  src
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================= Output of mvn archtype ============================================
+
+->mvn archetype:generate 
+
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1864: _______ ( Enter default 1864)
+
+Choose a number: 8: _______ ( Enter default 8)
+
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/maven-archetype-quickstart-1.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/maven-archetype-quickstart-1.4.pom (1.6 kB at 101 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/1.4/maven-archetype-bundles-1.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/1.4/maven-archetype-bundles-1.4.pom (4.5 kB at 558 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/maven-archetype-quickstart-1.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/maven-archetype-quickstart-1.4.jar (7.1 kB at 592 kB/s)
+
+Define value for property 'groupId': vinod
+Define value for property 'artifactId': devops
+Define value for property 'version' 1.0-SNAPSHOT: :
+Define value for property 'package' vinod: :
+Confirm properties configuration:
+groupId: vinod
+artifactId: devops
+version: 1.0-SNAPSHOT
+package: vinod
+ Y: : y
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: vinod
+[INFO] Parameter: artifactId, Value: devops
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: package, Value: vinod
+[INFO] Parameter: packageInPathFormat, Value: vinod
+[INFO] Parameter: package, Value: vinod
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: groupId, Value: vinod
+[INFO] Parameter: artifactId, Value: devops
+[INFO] Project created from Archetype in dir: /opt/devops
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:13 min
+[INFO] Finished at: 2022-02-11T03:00:43Z
+[INFO] ------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
