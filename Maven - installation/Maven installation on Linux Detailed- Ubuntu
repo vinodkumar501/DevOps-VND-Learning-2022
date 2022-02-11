@@ -34,6 +34,11 @@ OpenJDK Runtime Environment (build 1.8.0_312-8u312-b07-0ubuntu1~20.04-b07)
 OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
 
 
+check java path 
+
+readlink -f $(which java)
+/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
 ========================================= INSTALL MAVEN ===============================================
 https://maven.apache.org/download.cgi
 https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
@@ -44,30 +49,67 @@ At the time of writing this article, the latest version of Apache Maven is 3.6.0
 Start by downloading the Apache Maven in the /tmp directory using the following wget command:
 
 
-step1: download 
+Step1: Download 
 wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
 
-step2: install
+Step2: Extract
 tar -xzf apache-maven-3.8.4-bin.tar.gz
  
-step3: extract
+Step3: Copy to /opt 
 cp -r apache-maven-3.8.4 /opt
 
-step4:
+Step4:
 To have more control over Maven versions and updates, we will create a symbolic link maven that will point to the Maven installation directory:
 
 sudo ln -s /opt/apache-maven-3.6.0 /opt/maven
 Later if you want to upgrade your Maven installation you can simply unpack the newer version and change the symlink to point to the latest version.
 
-Step5: Setup environment variables
+Step5: 
+Setup environment variables
 Next, we’ll need to set up the environment variables. To do so, open your text editor and create a new file named maven.sh inside of the /etc/profile.d/ directory.
 
+readlink -f $(which java)
+/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 sudo nano /etc/profile.d/maven.sh
 
-export JAVA_HOME=/usr/bin/java
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
+
+Step6:
+Make the script executable with chmod :
+
+sudo chmod +x /etc/profile.d/maven.sh
+
+Finally load the environment variables using the source command:
+
+source /etc/profile.d/maven.sh
+
+Step7:
+Verify the installation
+To validate that Maven is installed properly use the mvn -version command which will print the Maven version:
+
+mvn -version
+
+Maven home: /opt/maven
+Java version: 1.8.0_312, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.11.0-1028-aws", arch: "amd64", family: "unix"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
