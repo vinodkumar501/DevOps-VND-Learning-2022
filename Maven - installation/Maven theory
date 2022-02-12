@@ -4,7 +4,6 @@ https://www.youtube.com/watch?v=HeobIM08LBw
 https://www.youtube.com/watch?v=KbTfdzs9J8U
 
 ==========================================
-
 Maven is a project management tool ( it manage project) 
 Popular use is for build management and dependencies
 
@@ -20,8 +19,7 @@ My project(spring/hibernate/junit) <------>  maven <------------apache jar
                                                    <----------- json jar
                                                    <---------- spring jar
                                                    <----------- hibernate jar
-                                                   
-                                                   
+                                                                                                    
 Once you build/run 
 it will get all dependencies downloaded from remote repo and store it in local repo(.M2) 
 for the next time build /run maven first will check local repo and perform action , if not present on local it fetch/download from remote and store it in .M2 lcoal file
@@ -40,10 +38,6 @@ When you build and run your app
 maven will handle class/build path for you
 Based on config(pom.xml) file maven will add jar file accordingly
 
-
-
-
-
 Build management tool: is a process that we compile and assemble all the source code (written by developer) into object files
 
 Maven: 
@@ -60,7 +54,6 @@ Maven:
 ->compiling source code
 ->packaging binaries/artifacts
 ->running automated tests
-
 
 Difference with other tools:
 . opensource
@@ -127,7 +120,6 @@ test -> unit testing files
 Once you start compile, maven will go through src/main folder to compile ( the files we over there )
 
 ================================================ POM.XML ================================================
- 
  GAV:
  
  ->How maven identify which plugin or project to select when we instruct a goal (G.A.V)
@@ -151,8 +143,7 @@ Once you start compile, maven will go through src/main folder to compile ( the f
  -integration-test(pre and post)
  -install
  -deploy
- 
- 
+  
  7. test project ( it creates a test project structure)
  mvn archtype:generate
  
@@ -172,20 +163,7 @@ Once you start compile, maven will go through src/main folder to compile ( the f
  -->local repo located in .M2 -->repo
  
  POM: conf file 
- --------------
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ ----- 
  
  
  
