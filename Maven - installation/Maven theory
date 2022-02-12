@@ -1,0 +1,242 @@
+Reference youtube sources 
+https://www.youtube.com/watch?v=Uo3g_zHk_Io
+https://www.youtube.com/watch?v=HeobIM08LBw
+https://www.youtube.com/watch?v=KbTfdzs9J8U
+
+==========================================
+
+Maven is a project management tool ( it manage project) 
+Popular use is for build management and dependencies
+
+What problems maven does solve?
+When building your java project , you need additional jar files
+eg: spring ,hibernate, common logging etc
+
+-> One approach is to download the jar files from each project website
+-> manually add the jar files to each project/classpath
+-> maven will make those fiels available during compile/run
+
+My project(spring/hibernate/junit) <------>  maven <------------apache jar
+                                                   <----------- json jar
+                                                   <---------- spring jar
+                                                   <----------- hibernate jar
+                                                   
+                                                   
+Once you build/run 
+it will get all dependencies downloaded from remote repo and store it in local repo(.M2) 
+for the next time build /run maven first will check local repo and perform action , if not present on local it fetch/download from remote and store it in .M2 lcoal file
+
+<<<<----- handling jar dependencies -------->>>>>>
+
+When maven retrieves a project dependency
+-> it will  also downlaod supporting dependencies
+-> for example spring depends on common-logging
+
+mavn will handle this for automatically
+
+Building and running:
+---------------------
+When you build and run your app
+maven will handle class/build path for you
+Based on config(pom.xml) file maven will add jar file accordingly
+
+
+
+
+
+Build management tool: is a process that we compile and assemble all the source code (written by developer) into object files
+
+Maven: 
+->convert .java files to .class files
+100 app.java files to 
+100 object files (.class files)
+
+->maven , ant , Gradle -----> for Java projects
+->c, c++ ---> Makefile
+
+->Maven/ build is process of compiling/converting (machine readable i.e object file) linking assemble a software file.
+->Maven is a java based build tool used for java projects.
+
+->compiling source code
+->packaging binaries/artifacts
+->running automated tests
+
+
+Difference with other tools:
+. opensource
+. project management tool as well as build tool
+. it has set of standards and object modules so no need to instruct.
+. define project lifecycle
+. dependency management
+
+How maven works?
+
+local repo(.M2) ---> pom.xml --> remote repo( maintained by maven source code community)
+-> it works as goals as pluugin/jar files
+  eg: maven do testing then it call plugins todo testing
+  
+ Default lifecycle:
+ ------------------
+ 
+ 1.generate - source/resources
+ 2.compile - all java files to .class files
+ 3.test -> unit test
+ 4.package -> deliverable or executable or artifacts 
+ 5.integration ->test (pre and post)
+ 6.install
+ 7.deploy
+ 
+ ->If you hit mvn test 
+  it do generate, compile and test 
+ 
+ -> mvn package
+ generatev -> compile ->test -> package 
+ 
+ clean -> it deletes all runtime files
+if you hit "mvn clean" it will not depend on other , it directly delete runtime files (target folder .class files)
+
+ =============================== Maven goals ==================================
+  
+ To invoke maven build you set lifecycle goal
+ 
+ eg:
+ mvn install
+ note: mvn -f pom.xml <goal>
+ Invokes generate and compile, test ,package , and install
+ 
+ mvn clean
+ -> invoke just clean
+ 
+ mvn clean compile
+ ->clean old builds and execute generate and compile
+ 
+ mvn compile install
+ ->Invokes generate source code, compile,test,integaration test, package install
+ 
+ mvn test clean
+ ->Invoke generate,compile,test
+then clean all
+
+Standarad directory layout:
+---------------------------
+-> If you want to work with mvn project , then we need to follow maven standard directory structure through which maven will work
+
+main -> actual src code , lib files additional info , propery files etc
+test -> unit testing files
+
+Once you start compile, maven will go through src/main folder to compile ( the files we over there )
+
+================================================ POM.XML ================================================
+ 
+ GAV:
+ 
+ ->How maven identify which plugin or project to select when we instruct a goal (G.A.V)
+ ->G (groupID): string represent company name /group name or business org on which u doing project
+ A ( artifactID): string represent product/deliverable (final output of the product)
+ V (versionID): major.minor.patch/maintenance ( add snapshot to identify development)
+ packaging: build type identifies using packaging element
+ 
+ eg: pom, jar(default), war, ear ,custom
+ 
+ ====================================== Maven build lifecycle ==========================================
+ 
+ A maven build follow a lifecycle
+ 
+ Default lifecycle
+ 
+ -generate sources/ generate resources
+ -compile
+ -test
+ -packages
+ -integration-test(pre and post)
+ -install
+ -deploy
+ 
+ 
+ 7. test project ( it creates a test project structure)
+ mvn archtype:generate
+ 
+ 8.One by one goals execution
+ 
+ ->jar ->java archive (default maven uses which contain group of .class files so we group this to get a particular behaviour
+ ->war -> web archive (contains group of jar + config + xml (for web based projects) 
+ ->ear ->enterprice application
+ 
+ How maven knows, where java files and what it has to do ,
+ where to keep files and fetch files .. etc this all keep done by below 2 files to run maven default lifecycle
+ 
+ 1.directory structure
+ 2.pom.xml
+ 
+ -->remote maven repo located in (http://repo1.maven.org/maven2)
+ -->local repo located in .M2 -->repo
+ 
+ POM: conf file 
+ --------------
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
