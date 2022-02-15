@@ -1,0 +1,31 @@
+https://www.terraform.io/downloads
+
+https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_linux_amd64.zip
+
+linux binary download and Unzip it  "Amd64"
+
+1.Download
+->wget https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_linux_amd64.zip
+
+2.Unzip it
+->unzip terraform_1.1.5_linux_amd64.zip
+
+Archive:  terraform_1.1.5_linux_amd64.zip
+  inflating: terraform
+
+3.root@ip-172-31-84-49:~# ls
+terraform  terraform_1.1.5_linux_amd64.zip
+
+4.Now, move the terraform binary to the executable directory /usr/local/bin. The executable directory (/usr/local/bin) allows you to run the executable files from anywhere in the Linux system.
+
+sudo mv terraform /usr/local/bin
+Finally, verify if terraform has been installed successfully by running the terraform --version command.
+
+terraform -v
+Terraform v1.1.5
+on linux_amd64
+
+
+--------------------------
+https://adamtheautomator.com/install-terraform/
+https://www.tecmint.com/install-terraform-in-linux/
