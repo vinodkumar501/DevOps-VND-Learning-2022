@@ -14,7 +14,7 @@ C:\Devops_softwares\Terraform-1.1.5
 
 ============================================
 
-open cmd and check you can execute your commands from anywhere on cmd
+close cmd line and open cmd and check you can execute your commands from anywhere on cmd
 
 terraform -v
 Terraform v1.1.5
