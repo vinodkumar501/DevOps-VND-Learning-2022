@@ -1,0 +1,5189 @@
+https://www.terraform.io/docs/cli/commands/plan.html
+
+Terraform v0.15.0
+
+	terraform -version
+
+Terraform v0.15.0
+on windows_amd64
++ provider registry.terraform.io/hashicorp/aws v3.7.0
+
+Your version of Terraform is out of date! The latest version
+is 0.15.1. You can update by downloading from https://www.terraform.io/downloads.html
+
+
+
+Ansible,Chef,Puppet are configuration management tools which means that they are primarily designed for install and manage software on existing servers.
+
+Terraform and cloudformation are infrastructure orchaestration tools which basically provision the servers and infrastructure by themselves.
+
+CM tools can do some degree of infrastructure provisioning but not much.
+
+Which IAC tool you chose
+-> Is your infrastructure is going to be vendor specific in longer term.
+->Are you planning to have multi-cloud or hybrid cloud based infrastructure
+->How well does this integrate with CM tools
+->Price and support
+
+TERRAFORM:
+
+-> Support multiple platfroms,has 100's of providers
+-> simple config language and faster learning curve.
+-> Easy integreate with CM tools like ansible
+-> easily extensible with the help of plugins
+-> free
+
+Install it on windows: (https://www.terraform.io/downloads.html)
+
+install and extract 
+Gotopath where terraform extract and execute 
+
+First excute commmand 
+
+->>dir
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 3440-E3C4
+
+ Directory of C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64
+
+22-04-2021  00:47    <DIR>          .
+22-04-2021  00:47    <DIR>          ..
+14-04-2021  15:35        81,033,592 terraform.exe
+               1 File(s)     81,033,592 bytes
+               2 Dir(s)  78,390,341,632 bytes free
+
+			   excute commmand   
+-->terraform.exe  or terraform
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform.exe
+Usage: terraform [global options] <subcommand> [args]
+
+The available commands for execution are listed below.
+The primary workflow commands are given first, followed by
+less common or more advanced commands.
+
+Main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+  destroy       Destroy previously-created infrastructure
+
+All other commands:
+  console       Try Terraform expressions at an interactive command prompt
+  fmt           Reformat your configuration in the standard style
+  force-unlock  Release a stuck lock on the current workspace
+  get           Install or upgrade remote Terraform modules
+  graph         Generate a Graphviz graph of the steps in an operation
+  import        Associate existing infrastructure with a Terraform resource
+  login         Obtain and save credentials for a remote host
+  logout        Remove locally-stored credentials for a remote host
+  output        Show output values from your root module
+  providers     Show the providers required for this configuration
+  refresh       Update the state to match remote systems
+  show          Show the current state or a saved plan
+  state         Advanced state management
+  taint         Mark a resource instance as not fully functional
+  test          Experimental support for module integration testing
+  untaint       Remove the 'tainted' state from a resource instance
+  version       Show the current Terraform version
+  workspace     Workspace management
+
+Global options (use these before the subcommand, if any):
+  -chdir=DIR    Switch to a different working directory before executing the
+                given subcommand.
+  -help         Show this help output, or the help for a specified subcommand.
+  -version      An alias for the "version" subcommand.
+  
+  
+  ON LINUX
+  
+wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
+ls
+unzip terraform_0.15.0_linux_amd64.zip 
+ls
+cd terraform
+
+If we want run that command first cp it to /bin
+
+check
+echo $PATH
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin
+
+Once we copy to bin we can run terraform command from anywhere you wish
+# cd vnd/
+# ls
+# terrfrom
+
+Main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+===============>
+
+https://www.terraform.io/intro/index.html
+
+The infrastructure Terraform can manage includes low-level components such as compute instances, storage, and networking, as well as high-level components such as DNS entries, SaaS features, etc.
+
+VPC -> SG -> VM ->LB  --->  terrafrom.config file 
+
+terraform.config
+-> light weight 
+->describe all details here
+
+3 Main commands for terrafomr
+
+Refresh ->TF view -> Realworld
+Plan    -> Desired config ->->Realworld ->
+Apply   -> Execute
+Destroy -> Remove
+
+TFconfig -> plan ->apply
+https://youtu.be/h970ZBgKINg
+
+https://learn.hashicorp.com/collections/terraform/aws-get-started?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS
+
+Terraform manual installation
+
+https://learn.hashicorp.com/tutorials/terraform/install-cli
+
+
+On mac/linux
+
+Windows
+Print a colon-separated list of locations in your PATH.
+
+$ echo $PATH
+
+Move the Terraform binary to one of the listed locations. This command assumes that the binary is currently in your downloads folder and that your PATH includes /usr/local/bin, but you can customize it if your locations are different.
+
+$ mv ~/Downloads/terraform /usr/local/bin/
+
+Verify the installation
+
+->terraform -help
+
+================================== EDITOR 
+Install 
+
+Atom software 
+https://atom.io/
+If you use terrafrom you should install plugin "language-terraform" in your atom editor.
+
+ ============================== Creating first EC2 instance with Terraform ==================================
+ When you launch a resource in aws there are 3 important considerations
+ 
+1.How will authenticate aws
+2.Which region the resource need to launch
+3.Which resource you want to launch
+
+terraform  --> aws 
+
+=============== =============================Terraform Registry ======================
+Discover Terraform providers that power all of Terraform’s resource types, or find modules for quickly deploying common infrastructure configurations.
+
+https://registry.terraform.io/browse/providers
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
+
+
+Authentication
+The AWS provider offers a flexible means of providing credentials for authentication. The following methods are supported, in this order, and explained below:
+
+Static credentials
+Environment variables
+Shared credentials/configuration file
+CodeBuild, ECS, and EKS Roles
+EC2 Instance Metadata Service (IMDS and IMDSv2)
+
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform -version
+Terraform v0.15.0
+
+=====================https://github.com/zealvora/terraform-beginner-to-advanced-resource/blob/master/Section%201%20-%20Deploying%20Infrastructure%20with%20Terraform/first-ec2.md
+
+terraform		AKIAYERGXHIW35I5NTNC	SQ3z6EqvTyxkHOTKd30xflaOHI1NtjsJiGCFMaF8
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
+
+Static credentials can be provided by adding an access_key and secret_key in-line in the AWS provider block:
+
+Resource: aws_instance
+Provides an EC2 instance resource. This allows instances to be created, updated, and deleted. Instances
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+
+ Directory of C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64
+
+22-04-2021  14:54    <DIR>          .
+22-04-2021  14:54    <DIR>          ..
+22-04-2021  14:54    <DIR>          .terraform
+22-04-2021  14:54             1,077 .terraform.lock.hcl
+22-04-2021  14:49               243 ec2.tf
+14-04-2021  15:35        81,033,592 terraform.exe
+
+ec2.tf
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+resource "aws_instance" "myec2"{
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+
+O/P
+
+-> terraform init
+first it initialise the aws plugins.
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.37.0...
+- Installed hashicorp/aws v3.37.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+===================
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.37.0...
+- Installed hashicorp/aws v3.37.0 (signed by HashiCorp)
+
+It states install hashicorp/aws plugins
+
+ls
+.terraform.lock.hcl
+.terraform
+ ec2.tf
+ terraform.exe
+
+ 
+============================= terraform plan ==============================
+It displays what terraform is planning to create 
+
+--->terraform plan
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+============================terraform apply ================================
+-> terraform apply
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_instance.myec2: Creating...
+aws_instance.myec2: Still creating... [10s elapsed]
+aws_instance.myec2: Still creating... [20s elapsed]
+aws_instance.myec2: Still creating... [30s elapsed]
+aws_instance.myec2: Creation complete after 34s [id=i-025fe565cabd69494]
+
+Apply complete! Resources: 1 added,
+
+
+Note:
+
+Each provider has resources divided into multiple categories
+Resources requires certain set of arguments based on use-case (like optional/required)
+
+
+RECAP:
+first_ec2.tf
+provider "aws" {
+  region     = "us-west-2"
+  access_key = "PUT-YOUR-ACCESS-KEY-HERE"
+  secret_key = "PUT-YOUR-SECRET-KEY-HERE"
+}
+
+resource "aws_instance" "myec2" {
+   ami = "ami-082b5a644766e0e6f"
+   instance_type = "t2.micro"
+}
+Commands:
+terraform init
+terraform plan
+terraform apply
+
+Documentation Referred:
+https://registry.terraform.io/
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+https://github.com/vinodkumar501/terraform-beginner-to-advanced-resource/blob/master/Section%201%20-%20Deploying%20Infrastructure%20with%20Terraform/destroy.md
+
+Destoy:
+->terraform destroy
+->terraform destroy -target aws_instance.myec2
+
+========================================  Understanding Resources & Providers - NEW =================================
+965 providers, 5648 modules & counting
+
+Terraform supports multiple providers
+Depending on what type of infrastructure we want to launch , we have to provide appropriate providers.
+
+Initialization phase
+
+->Upon adding provider its important to run terraform init which in turn download plugins associated with the provider.
+
+ec2.tf
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+resource "aws_instance" "myec2"{
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+provider "azurerm" {}
+
+=================
+->terraform init
+
+It downloads both aws and azure plugins once we initialise
+
+RESOURCES:
+-> Resources are reference to the individual services which the provider has to offers
+
+EX:
+resource aws_instance
+resource aws_alb
+resource iam_user
+resource digitalocean_droplet
+
+Depedns upon service we use we need to provide the resource 
+
+================ Important update -Newer version ======================
+From 0.13 version onwards, terraform requires explicit source of info any provider that are not hashicorp maintained 
+
+Using a new syntax require_providers nested block inside terraform config block
+
+HashiCorp maintained
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+  
+NON-Hashicorp maintained
+
+terraform {
+  required_providers {
+    digitalocean = {
+      
+================= FROM 0.13 and later ==========
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+
+=========Terraform 0.12 and earlier:========
+
+# Configure the AWS Provider
+provider "aws" {
+  version = "~> 3.0"
+  region  = "us-east-1"
+}
+
+=========
+newer version also works with 0.12 because this is hashicorp (aws) provider
+
+==================== provider digital ocean not a hashicorp provider so provider = "hashicorp" will not work in 01.3 laster versions 
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+resource "aws_instance" "myec2"{
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+provider "azurerm" {}
+provider "digitalocean" {}
+
+ERROR:
+======
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Finding latest version of hashicorp/digitalocean...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/azurerm v2.56.0
+- Using previously-installed hashicorp/aws v3.37.0
+╷
+│ Error: Failed to query available provider packages
+│
+│ Could not retrieve the list of available versions for provider hashicorp/digitalocean: provider registry registry.terraform.io does not have a provider named
+│ registry.terraform.io/hashicorp/digitalocean
+
+
+Note:
+
+It works till 0.12 terraform version
+
+=================== currently using 0.14 version========
+How to use this provider
+To install this provider, copy and paste this code into your Terraform configuration. Then, run terraform init.
+
+Terraform 0.13+
+===>
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "2.8.0"
+    }
+  }
+}
+
+provider "digitalocean" {
+  # Configuration options
+}
+=======
+https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs
+
+check in userprovider
+======================Understanding Resource & Providers - Part 2 NEW ===============
+
+Create a repo in github using terraform
+
+first create token from github
+
+settings ->Developer settings -> personel access tokens ->Generate new token
+
+search 
+github provider for terraform
+
+https://registry.terraform.io/providers/integrations/github/latest/docs
+
+Select USE provider -> right corner 
+https://registry.terraform.io/providers/integrations/github/latest/docs
+# providers and its authentication
+----------->
+terraform {
+  required_providers {
+    github = {
+      source = "integrations/github"
+      version = "4.9.2"
+    }
+  }
+}
+
+provider "github" {
+  token = "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"
+}
+
+
+### resource for creating new repo
+
+resource "github_repository" "example" {
+  name        = "vnd-example"
+  description = "My awesome codebase"
+  visibility = "private"
+}
+<----------
+====================
+https://gspann.udemy.com/course/terraform-beginner-to-advanced/learn/lecture/24757552#overview
+without token 
+ERROR
+
+Error: POST https://api.github.com/user/repos: 401 Requires authentication []
+
+Click on Resources 
+select ->github_repository  -> because we are creating repo 
+
+check on repo 
+
+will get vnd-example in github
+
+"github_repository" "example" {  #example :local repository
+
+====>
+check Argument Reference for which required / optional
+
+The following arguments are supported:
+
+name - (Required) The name of the repository.
+
+description - (Optional) A description of the repository.
+
+=========> ec2.tf
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+resource "aws_instance" "myec2"{
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+
+=========> gitbub.tf
+terraform {
+  required_providers {
+    github = {
+      source = "integrations/github"
+      version = "4.9.2"
+    }
+  }
+}
+
+provider "github" {
+  token = "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"
+}
+
+
+### resource for creating new repo
+
+resource "github_repository" "vnd" {
+  name        = "vnd-example"
+  description = "My awesome codebase"
+  visibility = "private"
+}
+===========
+Here both .tf files are in same folder so if we hit terraform apply it execute 2 .tf files 
+
+->terraform apply
+
+->terraform destroy
+github_repository.vnd: Refreshing state... [id=vnd-vani]
+aws_instance.myec2: Refreshing state... [id=i-02adcc1ab1e15e8f7]
+
+it destroy 2 .tf file resources
+
+
+
+=================================== Create ec2 instance using terraform ====================================
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+===================
+terrafom apply
+O/P:
+
+  Enter a value: yes
+
+aws_instance.web: Creating...
+aws_instance.web: Still creating... [10s elapsed]
+aws_instance.web: Still creating... [20s elapsed]
+aws_instance.web: Still creating... [30s elapsed]
+aws_instance.web: Creation complete after 37s [id=i-0a6ecf765feb8eb46]
+
+Ref:
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
+
+
+==================Destroy specific .tf file ===================
+terraform destroy -target aws_instance.web
+
+O/p:
+  Enter a value: yes
+
+aws_instance.web: Destroying... [id=i-0a6ecf765feb8eb46]
+aws_instance.web: Still destroying... [id=i-0a6ecf765feb8eb46, 10s elapsed]
+aws_instance.web: Still destroying... [id=i-0a6ecf765feb8eb46, 20s elapsed]
+aws_instance.web: Still destroying... [id=i-0a6ecf765feb8eb46, 30s elapsed]
+aws_instance.web: Destruction complete after 38s
+
+If you want to destroy all .tf files in folder.
+
+terraform destroy
+
+========================================== terrafom destroy ======================
+APPROACH1:
+
+terraform destroy will allow you to destroy all the resource that are created in the folder
+like 
+ec2.tf
+resource "aws_instance" "myec2"{
+
+github.tf
+resource "github_repository" "vnd" {
+
+
+============> terraform destroy with target <==========
+The -target option can be used to focus "Terraform" attention on only subset of resources.
+
+combination of : Resource Type + Local resource name
+
+ex:
+resource type       Local resource name
+aws_instance          myec2
+github_repository     example
+
+resource "aws_instance" "myec2" {
+
+Approach2:
+https://stackoverflow.com/questions/54187502/destroying-specific-terraform-infrastructure#:~:text=You%20can%20use%20%2Dtarget%20to%20target%20specific%20resources%20to%20destroy.&text=Don't%20mix%20terraform%20commands,to%20plan%2Fapply%2Fdestroy%20.&text=Then%20you%20should%20run%20below,plan%2C%20apply%20and%20destroy%20commands.
+
+
+terraform destroy with -target flag allows you to destroy specific resource
+
+terraform destroy -target aws_instance.myec2
+
+aws_instance.myec2 -> resource 
+myec2 -> resourcename
+
+ex:
+ec2_instance -> resource 
+ec2 -> resource name
+OR
+-----> terraform apply -target github_repository.vnd
+i.e
+
+github_repository -> resouce type
+vnd -> local resource type 
+
+referenced by terraform
+
+==============================================
+How to clear screen on cmd       ----> cls
+
+NOTE:
+
+If you want to "comment" anything use like this. terraform will not consider if we comment anything.
+
+/*
+
+
+
+*/
+
+
+Ex:
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+/*
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+*/
+
+========== 
+terraform init
+terraform plan
+O/P:
+No changes. Infrastructure is up-to-date.
+
+terraform apply 
+No changes. Infrastructure is up-to-date.
+
+If you comment it out then next terraform will now that you do not need this resource from next time.
+
+github.tf
+
+terraform {
+  required_providers {
+    github = {
+      source = "integrations/github"
+      version = "4.9.2"
+    }
+  }
+}
+
+provider "github" {
+  token = "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"
+}
+
+
+### resource for creating new repo 
+/*
+resource "github_repository" "example" {
+  name        = "vnd-example"
+  description = "My awesome codebase"
+  visibility = "private"
+}
+*/
+
+
+=====================================IMPORTANT====================================
+If you create a instnace or sth using terraform after some time you comment that line so terraform will try to delete that resource which we have created previously we created.
+
+terraform plan
+terraform apply
+
+Prev:
+  name        = "vnd-example"  ###created repo in github 
+  
+then comment that repo as above if you try to plan or apply it tries to delete that resource even though if we comment.
+It only works if its created using above .tf file otherwise it shows (if we comment resource) its up to date.
+
+WORKs:
+Only if we created a resource and then comment out that line then plan or apply it tries to delete.
+
+================================ Understanding Terraform State files (NEW) ========================
+https://gspann.udemy.com/course/terraform-beginner-to-advanced/learn/lecture/24757882#overview
+
+terraform.tfstate
+
+{
+  "version": 4,
+  "terraform_version": "0.15.0",
+  "serial": 48,
+  "lineage": "e070a87e-0c0e-9d69-996c-ff573297d140",
+  "outputs": {},
+  "resources": []
+}
+
+I have 2 .tf files
+ec2.tf and github.tf
+
+-> terrafom plan
+
+aws_instance.web will be created
+github_repository.example will be created
+
+It tries to create 2 files first it checks the files exists or not if exists it not effect 
+
+first let me create github.tf file once then add ec2.tf then perform terraform terraform apply 
+
+github_repository.example: Refreshing state... [id=vnd-example]
+  # aws_instance.web will be created
+  
+=====================How terraform will know the state of that resource ===================
+If it exists it not execute anythinng if it not exist it tries to add a resource 
+
+How terraform knows
+
+It check "terraform.tfstate" file here all related data stored what we created perviously. we created ec2.tf and github.tf files and that data stores in the form of "terraform.tfstate"
+
+Ex:
+
+{
+  "version": 4,
+  "terraform_version": "0.15.0",
+  "serial": 55,
+  "lineage": "e070a87e-0c0e-9d69-996c-ff573297d140",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-0742b4e673072066f",
+            "arn": "arn:aws:ec2:us-east-1:559500704301:instance/i-07178fb7d28221a50",
+            "associate_public_ip_address": true,
+            "availability_zone": "us-east-1b",
+            "cpu_core_count": 1,
+            "cpu_threads_per_core": 1,
+            "credit_specification": [
+              {
+                "cpu_credits": "standard"
+              }
+            ],
+            "disable_api_termination": false,
+            "ebs_block_device": [],
+            "ebs_optimized": false,
+            "enclave_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": null,
+            "iam_instance_profile": "",
+            "id": "i-07178fb7d28221a50",
+            "instance_initiated_shutdown_behavior": null,
+            "instance_state": "running",
+            "instance_type": "t2.micro",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "",
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_put_response_hop_limit": 1,
+                "http_tokens": "optional"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [],
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "primary_network_interface_id": "eni-091a560daa6a98978",
+            "private_dns": "ip-172-31-17-48.ec2.internal",
+            "private_ip": "172.31.17.48",
+            "public_dns": "ec2-54-226-26-248.compute-1.amazonaws.com",
+            "public_ip": "54.226.26.248",
+            "root_block_device": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/xvda",
+                "encrypted": false,
+                "iops": 100,
+                "kms_key_id": "",
+                "tags": {},
+                "throughput": 0,
+                "volume_id": "vol-06400c9093ce4f917",
+                "volume_size": 8,
+                "volume_type": "gp2"
+              }
+            ],
+            "secondary_private_ips": [],
+            "security_groups": [
+              "default"
+            ],
+            "source_dest_check": true,
+            "subnet_id": "subnet-18d44755",
+            "tags": {
+              "Name": "HelloWorld"
+            },
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": null,
+            "user_data_base64": null,
+            "volume_tags": null,
+            "vpc_security_group_ids": [
+              "sg-4e44d36c"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "github_repository",
+      "name": "example",
+      "provider": "provider[\"registry.terraform.io/integrations/github\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allow_merge_commit": true,
+            "allow_rebase_merge": true,
+            "allow_squash_merge": true,
+            "archive_on_destroy": null,
+            "archived": false,
+            "auto_init": null,
+            "default_branch": "main",
+            "delete_branch_on_merge": false,
+            "description": "My awesome codebase",
+            "etag": "W/\"8e74d943646734476b0f79f31f20b27f0bfa171d228c34e10fcfbef870af37cc\"",
+            "full_name": "vinodkumar501/vnd-example",
+            "git_clone_url": "git://github.com/vinodkumar501/vnd-example.git",
+            "gitignore_template": null,
+            "has_downloads": false,
+            "has_issues": false,
+            "has_projects": false,
+            "has_wiki": false,
+            "homepage_url": "",
+            "html_url": "https://github.com/vinodkumar501/vnd-example",
+            "http_clone_url": "https://github.com/vinodkumar501/vnd-example.git",
+            "id": "vnd-example",
+            "is_template": false,
+            "license_template": null,
+            "name": "vnd-example",
+            "node_id": "MDEwOlJlcG9zaXRvcnkzNjA3ODUwNTY=",
+            "pages": [],
+            "private": true,
+            "repo_id": 360785056,
+            "ssh_clone_url": "git@github.com:vinodkumar501/vnd-example.git",
+            "svn_url": "https://github.com/vinodkumar501/vnd-example",
+            "template": [],
+            "topics": null,
+            "visibility": "private",
+            "vulnerability_alerts": false
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    }
+  ]
+}
+
+
+======================= Check terraform.tf state after destroy ===========================
+{
+  "version": 4,
+  "terraform_version": "0.15.0",
+  "serial": 58,
+  "lineage": "e070a87e-0c0e-9d69-996c-ff573297d140",
+  "outputs": {},
+  "resources": []
+}
+
+See resources are None
+============================
+Nothing so it tries to check state if its present it will not apply , if not present in .tfstate it apply that .tf file
+all backup data of .tfstate will store in terraform.tfstate.backup file
+
+If you destroy or create anything it should be available in .tfstae file
+
+.tfstate -> contains all info about resource. exact data
+so dont touch with .tfstate (dont edit this file)
+
+            "private_ip": "172.31.17.48",
+            "public_dns": "ec2-54-226-26-248.compute-1.amazonaws.com",
+            "public_ip": "54.226.26.248",
+
+=======================
+If terraform apply 
+first checks state in .tfstate if its not present only it apply changes.
+
+Suppose 
+
+If you delete 
+terraform.tfstate
+terraform.tfstate.backup 
+
+it dont have data to check state so dont touch with tfstate.
+
+
+=================================14.Understanding Desired & Current States (NEW) ==================================
+
+Desired state:
+
+-> terraforms primary function is to create,modify, destroy infrastructure resource to match the "desired state"  described in the "terraform configuration"
+
+Actual state:
+->actual state of a resource that is currently deployed.
+
+If anyone your team modified state of machine manually from t2.micro to t2.nano terraform checks state in terraform.tfstate then modify according to that (desired state)
+
+here current state (t2.nano) desired state (t2.micro)
+
+
+*************Important pointer ************
+terraform tries to ensure that the deployed infrastructure is based on desired state.
+
+If suppose you create ec2 instance using terraform as t2.micro but someone from your team manually changed the config of instance from t2.micro to t2.nano 
+
+If there is any change happened manually by someone it reflect in "terraform.tfstate" after "terraform refresh" . 
+OR
+
+(if you perform "terraform plan" irrespective of terraform refresh) internally it do terraform refresh if we hit 
+"terraform plan" 
+
+If there is a difference between the two , "terraform plan" presents a discription of change necessary to achieve the change.
+
+change from micro to nano then do "terraform refresh" these state details will reflect in terraform.tfstate file.
+terraform will check .tf file with terraform.tfstate if any difference terraform will revert those changes to desired state as provided in .tf file.
+
+->terraform refresh
+(if you perform "terraform plan" irrespective of terraform refresh) internally it do perform terraform refresh.
+
+->Prev:
+
+terraform.tfstate:
+
+            "instance_type": "t2.micro",
+
+->after manually change -> then terraform refresh
+
+terraform.tfstate:
+
+            "instance_type": "t2.nano",
+
+
+Ex:
+
+# Configure the AWS Provider
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+==========
+terraform init
+terraform plan
+terraform apply 
+
+
+->stop that instance we created and change instance type from t2.micro to t2.nano 
+
+check 
+
+->terraform plan 
+
+github_repository.example: Refreshing state... [id=vnd-example]
+aws_instance.web: Refreshing state... [id=i-022b529942a725c8f]
+
+ ~ instance_type                = "t2.nano" -> "t2.micro"
+ 
+ Plan: 0 to add, 1 to change, 0 to destroy.
+ 
+It showing like its previously t2.micro so its changing back to original state. so whatever you add manually it wiped out. so if you apply manually once its created primary from terraform it will be temporary . so whatever you want to edit these you have do it from terrraform otherwise those changes you made are wipedout next time (terraform apply ) commnad
+
+
+->terraform apply 
+changes back to original state from nano to micro(desired)
+
+terraform make sure that ec2 instance present as shown in .tf file (desired)
+
+
+Note:
+
+always observer "terraform plan" before we do "terraform apply"
+
+
+
+========================== scenario 2 =====================
+Change instance type (t2.micro) donot have EBS-optimised option so changing manually to (t3.medium (having ebs-optimised option) 
+
+then check 
+
+terraform plan 
+
+and "terraform apply" 
+
+NOTE:
+It entirely wiped out that instance and create a new instance (because previous configuration donot have ebs-optimised option) so it needs to change entire hardware
+
+->terraform plan 
+
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # aws_instance.web must be replaced
+-/+ resource "aws_instance" "web" {
+      ~ arn                          = "arn:aws:ec2:us-east-1:559500704301:instance/i-022b529942a725c8f" -> (known after apply)
+      ~ associate_public_ip_address  = false -> (known after apply)
+      ~ availability_zone            = "us-east-1e" -> (known after apply)
+      ~ cpu_core_count               = 1 -> (known after apply)
+      ~ cpu_threads_per_core         = 2 -> (known after apply)
+      - disable_api_termination      = false -> null
+      - ebs_optimized                = true -> null # forces replacement
+
+
+      """- ebs_optimized                = true -> null # forces replacement"""
+It needs to replace the instance with t2.micro 
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+
+	terraform plan
+
+	terrafrom apply 
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed
+
+(It destroy the prev instance(not having ebs-optimised so need to destroy current and add desrired instance) and add a new instance)
+
+
+========================== 15 Challenges with the current state on computed values (NEW) =====================
+Current state :
+-> actual state of a resource that is currently deployed
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+=====
+If you deploy this resource "ec2 instance" will get a default values(like default "security group" "iam roles" etc) so
+
+If you modify sg from default to others using manually(like use -> other sg)
+-> terraform will not detect those changes because it checks only the .tf configuration (there we have not mentioned anything like it needs to use like "sg" and "Iam roles" etc)
+
+In .tf configration we have not mention like these "SG,IAM" need to use etc. So these changes will not get in "terraform plan" if you want to have use these specific security group(default or sth) you need to mention it in .tf file only.
+at that time only "terraform plan" will show the changes.
+
+NOTE:
+-> we not only mention "required" details in .tf file but also need to mention the other details as well in .tf configuration.
+
+TERRAFORM only checks the details which we have provided in the .tf file . here we havenot provide anything like  it use only this "security groups" (default).
+So if you want only default sg you have to mention it in .tf file only. otherwise terraform will show as up to date .
+If we hit "terraform plan"
+
+==============How to destroy specific .tf file connfg =======================
+terraform destroy -target github_repository.example
+
+resource name:github_repository
+local name: example
+
+
+================================= 16. Terraform Provider Versioning ===================================
+
+
+with the help of .tf file terraform will use the  underlined provider plugin it interacts with the backend cloud provider.
+
+.tf file -->terraform -->Provider plugin (Digital Ocean Provider) ---> New server(Cloud) (Digital ocean)
+
+proivder --------------------> colud 
+       infrastucture provisioning(API interactions)
+
+->Provider plugins are release separately from from Terraform itself.
+
+They have set of version numbers.
+Digital ocean (v1)              (Digital ocean(v2))
+
+(version is keep of updating (provider) irrespective of terraform version)
+
+If any change version we face few challenges in production 
+
+(ex: windows8 ---> windows10) so many changes 
+if directly jump to windows10 lot of things in your existing programming code and lot of things behind the scenes will change.
+Due to which we are not efficiently work or else appn would crash
+
+Similalry in terraform also need to provide like version. Mostly (explicitly) setting provider version for Production env.
+
+=========================> Explicitly setting provider version  <==================================
+During " terraform init" if version argument is not specified , the most recent provider downloaded during installation.
+
+NOTE:
+For production use you should provide the versions via configuration , to ensure that new versions with breaking changes  will not automatically installed.
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+
+--------> Arguments for specfied provider <------------
+
+      version = "3.37.0"
+version   & number of  arguments 
+
+>=1.0                   
+<=1.0
+~>2.0    ---> any version in 2.X range
+>=2.10,<=2.30  --> any version b/w 2.10 and 2.30
+
+We have explicitly mention the version.
+      version = "3.37.0"  ----> it downloads 3.37.0 plugins
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64\.terraform\providers\registry.terraform.io\hashicorp\aws 
+Path where 3.37.0 aws plugins are installed as we mentioned in version = 3.37.0 
+
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~>3.0"
+    }
+  }
+}
+# Configure the AWS Provider
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+----->
+
+      version = "~>3.0"
+	 In productin env not provide like this as version because it installs a specific version 3.x so . If we have to mention a specific version to for our 
+
+
+===============
+Previous version is 3.37.0
+If you want to downgrade/upgrade change that veresion in .tf file and hit below command to downgrade/upgrade.
+
+->terraform init -upgrade
+
+ec2.tf 
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.36.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+============ github.tf ==========
+terraform {
+  required_providers {
+    github = {
+      source = "integrations/github"
+      version = "4.9.2"
+    }
+  }
+}
+
+provider "github" {
+  token = "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"
+}
+
+
+### resource for creating new repo
+
+resource "github_repository" "example" {
+  name        = "vnd-example"
+  description = "My awesome codebase"
+  visibility = "private"
+
+=================================
+
+The installed version of provider will show in .terraform.lock.hcl file 
+==============================.terraform.lock.hcl ==========================
+provider "registry.terraform.io/hashicorp/aws" {
+  version     = "3.36.0"
+  constraints = "3.36.0"
+  hashes = [
+    "h1:WlAlvuH+7ByKFNU+ZQ8Fk91jkP5a9AQYBt09TkBVunw=",
+    "zh:17b1e924f1efc0084823bbcdd9565b6b7018b17e8471f65fc59c2d9617e28b60",
+    "zh:1fd5dfe2d22db93c576c2f328b4a9cf28e09b88496888a54a25325c638a69bec",
+    "zh:269d7e870fc86db4336ac215282ac0a97522209453ce6cc9022ab2079e4e7a3b",
+    "zh:3b107da332bccec4a6e60ed790323d7cc8d264d8b5709cb14a931728bb06241e",
+    "zh:74480ff5c05f9156f32c9d93c2c43bb13d7ae21bdc85b727550fe4c1812252ca",
+    "zh:79c60989f44dba2851c790dc15f18b80ba811e6140260cc42b9fe343656e3a01",
+    "zh:7f6fd96abd233acc52ec412bc72fb52784e47475f16eaa908e72c4c4b0997109",
+    "zh:b2fba2820c505a10211199112d3e16cac224b638ba6f8b09b8b635746cc49a11",
+    "zh:c4f53cb16f5e7439cefcddcc2e91798e5ec6a11ca6f9442e2ec509cd0859625c",
+    "zh:ec54a1b2ffbec157fad0b6e0efc0d8da1e1153874060d47497ab1a5e9d6ab26f",
+    "zh:f01d0fe3f7757fe290dc7889ffe1d926da665a7a0bb895b9f2518c3ac5c6963c",
+  ]
+}
+
+provider "registry.terraform.io/integrations/github" {
+  version     = "4.9.2"
+  constraints = "4.9.2"
+  hashes = [
+    "h1:g5F2BvZDBz9P2WGaAOfEwnIr79fw44TvtgrPxHcA5G8=",
+    "zh:0e9e66ae599447b91a1b649e03d900c301c4bbcf2b16b81ed9f491c847db3316",
+    "zh:1f259c7c2c19b4d6f755b9d68f32ffe9ce6e7aace8e7c0246b7e42f27d4abd0f",
+    "zh:25f851f2e9c5b9964ec55be64b60f0e0d8a67110c2b767f01946e0131b4a4e71",
+    "zh:3bb981fe97c97aba15b362164c5288b54a88ea1066b119005c361f3c6893f97c",
+    "zh:5c9513a5a36dc3c9b0708ae94f920841cfa94e267ef87b3dcef2b7430b39c293",
+    "zh:77149ce3c827f5cf6a0e5c4dbc2c1476b4a49039d27636b6dcdab8ea040c08a9",
+    "zh:98cde106a3ae07fdcb6aa05fddeb6d29d032cb07a2a394f27c4a353cf7fcaf77",
+    "zh:ded2491d9499ff7593de99c6cb4035f01baf060414e9b1d73b23425b5cbb96f7",
+    "zh:e810c7315b9364551b988b2b073fb2d633a1cb8422a9c8eb77c4156fb406a5bd",
+    "zh:eb7161a7f5c254bce0fc97c55914a35cd213032c6bc0029b605529f2897566af",
+    "zh:ec7baf2f555100077eec0eadcd0db5369c2dd1b858f76cda00b9968a5a79a29c",
+    "zh:f6ed1d99833feddd8fc182036d73a158f4129cc5dd9f56e38477e0fc447583ed",
+    "zh:f7e801df97fd73ab71dcf788e1aea36b49ac1d97d624be6e259887e0b0a249c6",
+  ]
+}
+
+======================================================
+
+ec2.tf 
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+Note:
+If you change the version in .tf file then execute "terraform init" command. will get below error. 
+O/P:
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+╷
+│ Error: Failed to query available provider packages
+│
+│ Could not retrieve the list of available versions for provider hashicorp/aws: locked provider registry.terraform.io/hashicorp/aws 3.37.0 does not match configured
+│ version constraint 3.35.0; must use terraform init -upgrade to allow selection of new versions
+
+======
+Because the previous version details are already stored on ".terraform.lock.hcl" so it blocks the installations eventhough if you change it in .tf file.
+
+update .tf file and execute "terraform init -upgrade" it upgrade version details in  ".terraform.lock.hcl"
+
+after upgrade
+==============================.terraform.lock.hcl ==========================
+provider "registry.terraform.io/hashicorp/aws" {
+  version     = "3.37.0"
+  constraints = "3.37.0"
+  hashes = [
+    "h1:WlAlvuH+7ByKFNU+ZQ8Fk91jkP5a9AQYBt09TkBVunw=",
+    "zh:17b1e924f1efc0084823bbcdd9565b6b7018b17e8471f65fc59c2d9617e28b60",
+    "zh:1fd5dfe2d22db93c576c2f328b4a9cf28e09b88496888a54a25325c638a69bec",
+    "zh:269d7e870fc86db4336ac215282ac0a97522209453ce6cc9022ab2079e4e7a3b",
+    "zh:3b107da332bccec4a6e60ed790323d7cc8d264d8b5709cb14a931728bb06241e",
+    "zh:74480ff5c05f9156f32c9d93c2c43bb13d7ae21bdc85b727550fe4c1812252ca",
+    "zh:79c60989f44dba2851c790dc15f18b80ba811e6140260cc42b9fe343656e3a01",
+    "zh:7f6fd96abd233acc52ec412bc72fb52784e47475f16eaa908e72c4c4b0997109",
+    "zh:b2fba2820c505a10211199112d3e16cac224b638ba6f8b09b8b635746cc49a11",
+    "zh:c4f53cb16f5e7439cefcddcc2e91798e5ec6a11ca6f9442e2ec509cd0859625c",
+    "zh:ec54a1b2ffbec157fad0b6e0efc0d8da1e1153874060d47497ab1a5e9d6ab26f",
+    "zh:f01d0fe3f7757fe290dc7889ffe1d926da665a7a0bb895b9f2518c3ac5c6963c",
+  ]
+}
+
+If you change the version in .tf file then execute "terraform init" command. it blocks the plugin provider version because its not match with prev versions ".terraform.lock.hcl" block this provider plugin. for that you need to upgrade 
+"terraform init -upgrade" or just delete that ".terraform.lock.hcl" file and execute like below.
+
+--->terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching "3.35.0"...
+
+If you have to upgrade it or delete ".terraform.lock.hcl" and do "terraform init".
+
+
+================================ ec2.tf with version >=2.0,<=2.8 ==================
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = ">=2.0,<=2.8"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+=======================
+-> terrafrom init -upgrade 
+
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching ">= 2.0.0, <= 2.8.0"...
+- Installing hashicorp/aws v2.8.0...
+
+it install versions in between 2.0.0 to 2.8.0
+and update these provider details in ".terraform.lock.hcl" file
+
+->".terraform.lock.hcl" file
+
+# This file is maintained automatically by "terraform init".
+# Manual edits may be lost in future updates.
+
+provider "registry.terraform.io/hashicorp/aws" {
+  version     = "2.8.0"
+  constraints = ">= 2.0.0, <= 2.8.0"
+  
+=====================You want only 3.x version ===========
+      version = "~>3.0"
+
+.terraform.lock.hcl
+
+provider "registry.terraform.io/hashicorp/aws" {
+  version     = "3.27.0"
+  constraints = "~3.0"
+  
+  
+===================> DEPENDENCY LOCK File <========================
+
+terraform dependency lock file allows us to lock to a specific version of provider.
+
+If particular provider already has version details recorded in lock file (".terraform.lock.hcl") terraform will always reselect that prev version for installation , even if we have newer version available.
+
+-> You can override that behaviour by adding -upgrade option when you run terraform init.
+
+first mention it in .tf file and execute 
+
+-> terraform init -upgrade
+
+
+DOC:
+https://docs.google.com/document/d/179clqsxOGQa-iGKu1dcmz89Vpso9-7Of8opIkXwPr_k/edit
+
+
+==============================        CHAPTER 4          ==============================
+
+--> 18. Overview of Course Lecture Format <---
+
+https://github.com/vinodkumar501/terraform-beginner-to-advanced-resource
+
+
+========19.Understanding Attributes and Output Values in Terraform =====================
+
+Understanding attribute values:
+-> terrraform has the capability to putput the attribute of a resource with the O/P values.
+
+EX:
+ec2_public_ip = 35.212.34.45
+bucket_identifier = terraform-test-s3.amazonaws.com
+
+ATTRIBUTE are important
+
+an o/p values can not only referenced for the user reference but it can also referenced as input to the other resources being created via terraform.
+
+Ex:
+
+After EIP get created "its ip address" should get automatically whitelisted in the SG.
+
+resource1                           resource2
+EIP                                SG
+
+EIP creates (public ip) it should o/p should go to the SG and it should automatically whitelisted.
+
+----------->
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_eip" "lb1" {
+  instance = "i-017aeca718092a36d"
+  vpc      = true
+}
+
+resource "aws_s3_bucket" "mys3vnd123" {
+  bucket = "mys3vndvani123"
+}
+
+
+<-----------
+It creates an EIP address and attached to instance prev created
+creates a S3 bucket.
+
+  instance = "i-017aeca718092a36d" --> if you have any instance crated previously so we want to add that eip to that vm
+    vpc      = true
+
+vpc - (Optional) Boolean if the EIP is in a VPC or not.
+instance - (Optional) EC2 instance ID.
+
+instance will get eip we created.
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip#argument-reference
+
+dstroy:(s3 bucket)
+terraform destroy -target aws_s3_bucket.mys3vnd123
+
+====================================
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_eip" "lb1" {
+  instance = "i-017aeca718092a36d"
+  vpc      = true
+}
+
+output "eip-address-vnd-created" {
+  value = "aws_eip.lb1"
+}
+
+resource "aws_s3_bucket" "mys3vnd123" {
+  bucket = "mys3vndvani123"
+}
+
+output "bucketcreated" {
+  value = "aws_s3_bucket.mys3vnd123"
+}
+
+
+=========================================
+  value = "aws_s3_bucket.mys3vnd123"  --> resource identify
+  value = "aws_eip.lb1"
+  
+O/P:
+
+it shows all under s3 bucket values.
+
+If you not specify any attribute it display all attributes.
+
+Changes to Outputs:
+  ~ bucketcreated           = "aws_s3_bucket.mys3vnd123-vnd" -> {
+      + acceleration_status                  = ""
+      + acl                                  = "private"
+      + arn                                  = "arn:aws:s3:::mys3vndvani123"
+      + bucket                               = "mys3vndvani123"
+      + bucket_domain_name                   = "mys3vndvani123.s3.amazonaws.com"
+      + bucket_prefix                        = null
+      + bucket_regional_domain_name          = "mys3vndvani123.s3.amazonaws.com"
+      + cors_rule                            = []
+      + force_destroy                        = false
+      + grant                                = []
+      + hosted_zone_id                       = "Z3AQBSTGFYJSTF"
+      + id                                   = "mys3vndvani123"
+      + lifecycle_rule                       = []
+      + logging                              = []
+      + object_lock_configuration            = []
+      + policy                               = null
+      + region                               = "us-east-1"
+      + replication_configuration            = []
+      + request_payer                        = "BucketOwner"
+      + server_side_encryption_configuration = []
+      + tags                                 = {}
+      + versioning                           = [
+          + {
+              + enabled    = false
+              + mfa_delete = false
+            },
+        ]
+      + website                              = []
+      + website_domain                       = null
+      + website_endpoint                     = null
+    }
+  ~ eip-address-vnd-created = "aws_eip.lb1.public_ip" -> {
+      + allocation_id             = null
+      + associate_with_private_ip = null
+      + association_id            = "eipassoc-07918c10e784941cf"
+      + carrier_ip                = ""
+      + customer_owned_ip         = ""
+      + customer_owned_ipv4_pool  = ""
+      + domain                    = "vpc"
+      + id                        = "eipalloc-057e03cd82b3aa1ac"
+      + instance                  = "i-017aeca718092a36d"
+      + network_border_group      = "us-east-1"
+      + network_interface         = "eni-04343b7c89e03786d"
+      + private_dns               = "ip-172-31-50-92.ec2.internal"
+      + private_ip                = "172.31.50.92"
+      + public_dns                = "ec2-67-202-62-244.compute-1.amazonaws.com"
+      + public_ip                 = "67.202.62.244"
+      + public_ipv4_pool          = "amazon"
+      + tags                      = {}
+      + timeouts                  = null
+      + vpc                       = true
+    }
+
+======================================
+if you want only few details after terraform apply ->update values to 
+
+  value = aws_eip.lb1.private_dns
+  value = aws_s3_bucket" "mys3vnd123.bucket_domain_name
+
+--------------->
+If we want only specific values
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_eip" "lb1" {
+  instance = "i-017aeca718092a36d"
+  vpc      = true
+}
+
+output "eip-address-vnd-created" {
+  value = aws_eip.lb1.public_ip
+}
+
+resource "aws_s3_bucket" "mys3vnd123" {
+  bucket = "mys3vndvani123"
+}
+
+output "bucketcreated" {
+  value = aws_s3_bucket.mys3vnd123.bucket_domain_name
+}
+
+===============
+resource "aws_eip" "lb1"
+->
+resourcename.localname.attribute
+
+aws_eip.lb1.public_ip  
+--> public_ip  : attribute associate with eip resource
+aws_s3_bucket.mys3vnd123.bucket_domain_name 
+-->bucket_domain_name --> attribute associate with s3 bucket
+
+O/P:
+
+
+bucketcreated = "mys3vndvani123.s3.amazonaws.com"
+eip-address-vnd-created = "67.202.62.244"
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip#argument-reference
+
+To display output after executing "terraform apply"
+
+https://www.terraform.io/docs/language/values/outputs.html
+
+In addition to all arguments above, the following attributes are exported:
+
+id - Contains the EIP allocation ID.
+private_ip - Contains the private IP address (if in VPC).
+private_dns - The Private DNS associated with the Elastic IP address (if in VPC).
+
+==================================
+terraform destroy -help
+Usage: terraform [global options] destroy [options]
+
+  Destroy Terraform-managed infrastructure.
+
+Options:
+
+  -auto-approve          Skip interactive approval before destroying.
+
+  -lock=true             Lock the state file when locking is supported.
+
+  -lock-timeout=0s       Duration to retry a state lock.
+
+  -no-color              If specified, output won't contain any color.
+
+  -parallelism=n         Limit the number of concurrent operations.
+                         Defaults to 10.
+
+  -refresh=true          Update state prior to checking for differences. This
+                         has no effect if a plan file is given to apply.
+
+  -target=resource       Resource to target. Operation will be limited to this
+                         resource and its dependencies. This flag can be used
+                         multiple times.
+
+  -var 'foo=bar'         Set a variable in the Terraform configuration. This
+                         flag can be set multiple times.
+
+  -var-file=foo          Set variables in the Terraform configuration from
+                         a file. If "terraform.tfvars" or any ".auto.tfvars"
+                         files are present, they will be automatically loaded.
+
+  -state, state-out, and -backup are legacy options supported for the local
+  backend only. For more information, see the local backend's documentation.
+  
+  
+========================== 20. Referencing Cross-Account Resource Attributes =========================================
+
+CREATE AN EC2 INSTANCE AND ATTACH EIP ADDRESS.
+
+if you add like it creates individual resources but not attached to that same vm. for that we need add few details.
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = 
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_eip" "lb" {
+  vpc      = true
+}
+
+
+==================================
+https://thesocialcomment.com/blog/How-to-Attach-Elastic-IP-to-EC2-Instance-Using-Terraform-?pid=5f2459aca561f35485d3f25e
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
+
+Resource: aws_eip_association
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip_association
+
+ec2-eip.tf
+
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_instance" "gspann" {
+  ami           = 
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_eip" "lb" {
+  vpc      = true
+}
+
+*/ resource to attach eip with ec2_instance */
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.gspann.id
+  allocation_id = aws_eip.lb.id
+}
+
+============================
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+
+Attributes Reference
+id is set to the ID of the found Instance. In addition, the following attributes are exported:
+
+  instance_id   = aws_instance.gspann.id
+  
+aws_instance-> instance 
+gspann -> local name
+id ->ID of the found Instance
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
+
+Attributes Reference
+In addition to all arguments above, the following attributes are exported:
+
+id - Contains the EIP allocation ID.
+  
+  
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip_association
+
+Attributes Reference
+In addition to all arguments above, the following attributes are exported:
+
+association_id - The ID that represents the association of the Elastic IP address with an instance.
+allocation_id - As above
+instance_id - As above
+network_interface_id - As above
+private_ip_address - As above
+public_ip - As above
+
+====================
+
+# for providing provider version #
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+# creating aws instance as resource  #
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+# creating elastic ip as resource  #
+
+resource "aws_eip" "lb" {
+  vpc      = true
+}
+
+# resource block for ec2 and eip association #
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.web.id
+  allocation_id = aws_eip.lb.id
+}
+
+------------------>
+  instance_id   = aws_instance.web.id
+  
+id -> attribute associate with ec2 instance (instance id)
+  
+-> terraform apply
+
+ # aws_eip.lb will be created
+ 
+ # aws_eip_association.eip_assoc will be created
+   
+ # aws_eip_association.eip_assoc will be created
+
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+aws_eip.lb: Creating...
+aws_instance.web: Creating...
+aws_eip.lb: Creation complete after 2s [id=eipalloc-0598ea7a6fb9ca721]
+aws_instance.web: Still creating... [10s elapsed]
+aws_instance.web: Still creating... [20s elapsed]
+aws_instance.web: Still creating... [30s elapsed]
+aws_instance.web: Creation complete after 34s [id=i-063b70a70eaad0f15]
+aws_eip_association.eip_assoc: Creating...
+aws_eip_association.eip_assoc: Creation complete after 4s [id=eipassoc-02abbbd25cf0f478a]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+
+Instance:  i-063b70a70eaad0f15 (HelloWorld)Elastic IP: 52.6.185.72 -> (in aws console )
+
+fist it creates eip and then ec2 instance then it attach eip to ece instance.
+
+---->
+terraform destroy
+
+==================================== EIP and Security group ===============
+EXAMPLE 2:
+      -> EIP and Security group
+
+EIP -------------> SG (attach EIP to SG)
+
+first create SG
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+
+inbound -> ingress
+oubound -> egress
+
+sg.tf
+
+
+
+# for providing provider version #
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "SQ3z6EqvTyxkHOTKd30xflaOHI1NtjsJiGCFMaF8"
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.web.id
+  allocation_id = aws_eip.example.id
+}
+
+resource "aws_instance" "web" {
+  ami               = "ami-0742b4e673072066f"
+  availability_zone = "us-east-1a"
+  instance_type     = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_eip" "example" {
+  vpc = true
+}
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks = ["${aws_eip.example.public_ip}/32"]
+  }
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks = ["${aws_eip.example.public_ip}/32"]
+  } 
+
+  tags = {
+    Name = "allow_tls"
+    }
+  }
+
+  
+  
+=====================================
+terraform plan
+terraform apply
+
+
+
+aws_eip.example: Creating...
+aws_instance.web: Creating...
+aws_eip.example: Creation complete after 3s [id=eipalloc-0f462428f4c9ea662]
+aws_security_group.allow_tls: Creating...
+aws_instance.web: Still creating... [10s elapsed]
+aws_security_group.allow_tls: Still creating... [10s elapsed]
+aws_security_group.allow_tls: Creation complete after 11s [id=sg-0c0cd705f61d438c8]
+aws_instance.web: Still creating... [20s elapsed]
+aws_instance.web: Still creating... [30s elapsed]
+aws_instance.web: Creation complete after 36s [id=i-02f4195bbf14e8312]
+aws_eip_association.eip_assoc: Creating...
+aws_eip_association.eip_assoc: Creation complete after 4s [id=eipassoc-04cb6163df2d34139]
+
+============================== 21. Terraform Variables =========================================
+static = work
+
+Repeated static values can create more work in future.
+
+
+Prjct A 
+
+155.49.45.32
+155.49.45.32
+155.49.45.32
+
+Prjct B
+155.49.45.32
+155.49.45.32
+155.49.45.32
+
+at some time PrjctA and B ip changes we have to apply it manually its tedious task for us 
+
+
+==== variables are good =====
+We have a central source from which we can import values from
+
+
+10.223.23.23   --->  Central source  ---->var.source
+                                     ---->var.source
+									 ---->var.source
+
+Means you have to change or modify in central file then you can get that values any where using "variable"
+just need to mention that var in that code. it takes from central place and fill that variable value.
+
+https://www.terraform.io/docs/language/values/variables.html
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami               = "ami-0742b4e673072066f"
+  availability_zone = "us-east-1a"
+  instance_type     = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_eip" "example" {
+  vpc = true
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.web.id
+  allocation_id = aws_eip.example.id
+}
+
+#  ******** variable block ************ #
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks = [var.cidr_id-vnd]
+  }
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks = [var.cidr_id-vnd]
+  } 
+
+  tags = {
+    Name = "allow_tls"
+    }
+  }
+
+==================
+var.tf
+
+variable "cidr_id-vnd" {
+  default = "113.23.32.34/32"
+}
+
+==================
+
+terraform apply
+
+  Plan: 0 to add, 1 to change, 0 to destroy.
+  
+check it in aws console sg "source ip" updated with mentioned var or not
+it changes in HTTP 80 and HTTP8443
+
+Variable : we no need to touch code base only thing is we need to change it in 1 file and it reflect anywhere we mention as variable in the code.
+
+Only we need to change 1 place terraform picks and reflect where its required as mentioned ( env.variable) in code.
+
+
+Variable:
+-> important in writing a clean terraform code.
+-> Important in reusable code as well.
+-> use variable wherever possible.
+
+========================= 22. Approaches for Variable Assignment ===============================
+
+Multiple Approaches for Variable Assignment:
+
+-> Variables in terraform can be assigned in multiple ways.
+Some of these includes.
+
+1.Env variable
+2.Command line flags
+3.From a file
+4.Variable Default
+
+
+1.ENV Variables:
+-> Just mention in .tf file ( for easy ) without hard coding the values.
+============================ ec2.tf ================
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami               = "ami-0742b4e673072066f"
+  availability_zone = "us-east-1a"
+  instance_type     = var.InstanceType
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+======================== var.tf ======
+
+
+variable "InstanceType" {
+  type    = string
+  default = "t2.micro"
+}
+
+=======================
+│ Error: Client.InvalidParameterValue: Invalid value 'var.instancetype' for InstanceType.
+│       status code: 400, request id: 0f732247-501a-42de-b037-5d26b33d6149
+│
+│   on var-keys.main-8.tf line 18, in resource "aws_instance" "web":
+│   18: resource "aws_instance" "web" {
+│
+
+https://www.terraform.io/docs/language/values/variables.html
+
+terraform apply
+
+  # aws_instance.web will be updated in-place
+  ~ resource "aws_instance" "web" {
+        id                           = "i-02f4195bbf14e8312"
+      ~ instance_type                = "t2.nano" -> "t2.micro"
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+
+----> 2.Command line flags  (Not a best approach) <-------------
+
+-> terraform plan -var="InstanceType=t2.small"
+
+  ~ instance_type                = "t2.micro" -> "t2.small"
+  
+  
+  
+NOTE:
+
+var.tf
+-->
+variable "InstanceType" {
+  type    = string
+  default = "t2.micro"
+}
+<--
+If no explicit value specified to terraform , then terraform will use of theis default value.
+
+If you not specify in the variable of "default" type it can ask to provide that "var.InstanceType" to proceed for.
+
+
+EG:
+
+var.tf
+-->
+
+variable "InstanceType" {
+}
+
+<--
+It will ask over CLI if we not specify any instancetype "default" in var.tf file like above
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform plan
+
+var.InstanceType
+  Enter a value: ---------- (t2.nano)
+  
+     ~ instance_type                = "t2.micro" -> "t2.nano"
+
+======================= FROM A FILE =======================
+---------------------> terraform.tfvars <--------------
+
+InstanceType="t2.large"
+
+---------------------> var.tf <--------------
+
+variable "InstanceType" {
+  #type    = string
+  default = "t2.micro"
+}
+
+by default terraform will take variables for .var file , if suppose if you mention terraform.tfvars it execute commands from "terraform.tfvars" .
+
+by default t2.micro created for you if you not specify anything in terraform.tfvars file
+"filename should be "terraform.tfvars" otherwise explicitly you need to mention custom.tfvars(vinod.tfvars ) file etc.
+
+Keep the filename as "terraform.tfvars" otherwise you need mention other file name "explicity" by default it takes from "terrafor.tfvars"
+
+Priority first "terraform.tfvars"
+
+without var.tf , terraform.tfvars will not work because there is not env variable specified in "terrafor.tfvars"
+
+-> terraform apply 
+      ~ instance_type                = "t2.micro" -> "t2.large"
+
+-> terraform.tfvars has priority higher than var.tf 
+
+============================
+custom.tfvars file
+
+-->vnd.tfvars 
+InstanceType="t2.large"
+
+
+=========
+->terraform plan -var-file="vnd.tfvars"
+
+      ~ instance_type                = "t2.micro" -> "t2.medium"
+
+Priority
+
+terraform.tfvars
+vars-vnd.tf
+
+Execute cusotm.tfvars file using 
+
+terraform plan -var-file="vnd.tfvars"
+
+================= how to assign env variable in Windows ============
+
+--->setx TF_VAR_InstanceType m5.large
+
+TF_VAR -> default
+InstanceType -> name associated variable
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>setx TF_VAR_InstanceType m5.large
+
+SUCCESS: Specified value was saved.
+
+terraform plan
+
+    ~ instance_type                = "t2.micro" 
+
+in order check these you need to remove the terrafor.tfvars file.then execute 
+terraform plan
+
+~ instance_type                = "t2.micro" -> "m5.large"
+
+---> setx TF_VAR_InstanceType t3.large
+
+terraform plan 
+~ instance_type                = "t2.micro" -> "m5.large"
+
+Prev:
+echo %TF_VAR_InstanceType%
+m5.large
+
+still we get same prev response its window issue (Bug) exit that command line and check its not refresh after update the env variable. 
+
+NOTE:
+check it in new command line (cmd) 
+
+terraform plan 
+~ instance_type                = "t2.micro" -> "t3.large"
+
+echo %TF_VAR_InstanceType%
+m5.large
+
+
+================= how to assign env variable in linux/msc env ============
+
+https://www.terraform.io/docs/cli/config/environment-variables.html
+
+»TF_VAR_name
+Environment variables can be used to set variables. The environment variables must be in the format TF_VAR_name and this will be checked last for a value. For example:
+
+export TF_VAR_region=us-west-1
+export TF_VAR_ami=ami-049d8641
+export TF_VAR_alist='[1,2,3]'
+export TF_VAR_amap='{ foo = "bar", baz = "qux" }'
+
+TF_VAR --> Default
+
+
+===================================== 23. Data Types for Variables =========================
+The "type" argument in a variable block allow you to "restrict the type of value that will accepted as value for a var"
+
+var.tf
+
+variable "image_id" {
+  type = string
+}
+
+
+->it takes only string value 
+=========
+vart.tf without "type" parameter.
+
+variable "image_id" {
+}
+
+it takes any value (string/number/list etc) so better to use as type for standard approach . other wise image_id they fill as name or number anything what they prefer. if you specify "type" only that type or format is acceptable by terraform.
+
+->var.tf
+
+variable "image_id" {
+  type = string
+}
+
+If no constraint is set then a value of any type is acceptable.
+
+EX:
+
+Every employee in medium corp is assigned as Id number.
+any resource that employee creates should be created with the name of the id only.
+
+variable.tf                                      terraform.tfvars
+variable "instance_name" {}                   instance_name="john-123"
+
+---->
+
+variable "instance_name" {
+   type=number
+}  
+
+
+if you specify otherthan any string or sth terraform will fail (use of "type" argument)
+
+Eg:
+
+----->
+===============================================================
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  name = var.user-name
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+
+============
+  name = var.user-name
+ don't use double quotes here if you use 
+ 
+----------------------------------- 
+-> var.tf
+---
+variable "user-name" {
+ type = number
+}
+-----------------------------------
+->terraform.tfvars
+-----
+user-name="vndvani"
+-----------------------------------
+
+--> terraform plan
+
+it execute from terraform.tfvars
+ 
+===================================================================================
+ type = string
+ 
+if you not specify anything like  type . anyone has to write anything 
+eg:
+user-name: 34556/vinod/cat/avipc     so anything you can write . so its not a good one. so we need to mention "type=number" or 
+"type=string" only that specified type can able to enter. if they enter invalid details it enters in to exit state.
+
+Error:
+
+  Enter a value: vinod
+
+╷
+│ Error: Invalid value for input variable
+│
+│ The value entered for variable "user-name" is not valid: a number is required.
+
+It it accept specified type otherwise it exits.
+
+
+https://registry.terraform.io/modules/rafaelmarques7/iam-user/aws/latest
+
+Eg2:
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  name = var.user-number
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+--->
+
+-> var.tf
+
+variable "user-number" {
+}
+
+Since we havenot define any variable value we have to provide it manually. and the shold be in string format only otherwise it cannot accept(if type is provided) otherwise it cann accept any format of data (string,number)etc
+
+======================== Overview of Data Types: ======================
+	string --> Sequence of unicode characters representing some text like "hello"
+
+	list --> sequence of values identified by their position . start with 0
+["mumbai","singapore","usa"]
+
+	map --> a group of values identified by named labels , like
+ {name="mable",age=52}
+ 
+	number --> example: 200
+
+
+https://github.com/search?q=terraform-aws-modules
+https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/latest
+https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/blob/master/variables.tf
+type = string (or good practice)
+
+aws_elb
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elb
+
+input variables:
+->https://www.terraform.io/docs/language/values/variables.html
+
+
+____________________________ How to create LB using env variables ____________________________
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elb
+
+How to use variable in .tf files
+
+====== elb.tf =======
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = var.accesskey
+  secret_key = "SQ3z6EqvTyxkHOTKd30xflaOHI1NtjsJiGCFMaF8"
+}
+
+# Create a new load balancer
+resource "aws_elb" "bar" {
+  name               = var.name
+  availability_zones = var.avz
+
+  listener {
+    instance_port     = 8000
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
+  }
+
+  idle_timeout                = var.idletime
+  connection_draining         = true
+  connection_draining_timeout = var.idletime
+
+  tags = {
+    Name = "foobar-terraform-elb"
+  }
+}
+
+
+======== var.tf ========== https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/blob/master/variables.tf
+
+variable "name" {
+ type = string
+}
+
+variable "avz" {
+  type = list
+}
+
+variable "idletime" {
+  type = number
+}
+
+variable "accesskey" {
+  type = string
+}
+
+
+note: we can define any thing variable "anything"
+   type = required
+   
+====== terraform.tfvars =========
+
+name="vinodkumarchenna"
+avz=["us-east-1a","us-east-1b","us-east-1c","us-east-1d"]
+idletime=100
+accesskey="AKIAYERGXHIW35I5NTNC"
+
+
+terraform apply 
+
+  # aws_elb.bar will be created
+  + resource "aws_elb" "bar" {
+      + arn                         = (known after apply)
+      + availability_zones          = [
+          + "us-east-1a",
+          + "us-east-1b",
+          + "us-east-1c",
+          + "us-east-1d",
+        ]
+      + connection_draining         = true
+      + connection_draining_timeout = 3000
+      + cross_zone_load_balancing   = true
+      + dns_name                    = (known after apply)
+      + id                          = (known after apply)
+      + idle_timeout                = 3000
+      + instances                   = (known after apply)
+      + internal                    = (known after apply)
+      + name                        = "vinodkumarchenna"
+
+
+
+https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/latest
+
+Outputs
+Name	Description
+elb_arn	The ARN of the ELB
+elb_dns_name	The DNS name of the ELB
+elb_id	The name of the ELB
+elb_instances	The list of instances in the ELB
+elb_name	The name of the ELB
+elb_source_security_group_id	The ID of the security group that you can use as part of your inbound rules for your load balancer's back-end application instances
+elb_zone_id	The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
+
+====== for above file use variable wherever its needed ===============
+it creates lb name as vinodkumarchenna (timeout as mentioned variable 100) with zones.
+
+============================ 24. Fetching Data from Maps and List in Variable ====================
+
+It's important to specify type in variable.
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = var.list[0]
+  #instance_type = var.map["us-east-2"]
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+variable "list" {
+  type = list
+  default=["t2.micro","t2.medium","t2.large"]
+}
+
+variable "map" {
+  type = map
+  default= {
+    us-east-1 = "t2.micro"
+    us-east-2 = "t2.medium"
+    ap-south-1 = "t2.large"
+  }
+}
+
+====================
+terraform plan
+
++ instance_type                = "t2.micro"
+
+list : Position  ->(list)
+
+var.list[0]  ---> t2.micro
+  default=["t2.micro","t2.medium","t2.large"]
+  
+Map: ->variable refrence to specific key within the map
+
+instance_type = var.map["us-east-2"]
++ instance_type                = "t2.medium"
+
+    us-east-1 = "t2.micro"
+    us-east-2 = "t2.medium" <----
+    ap-south-1 = "t2.large"
+
+============================================ 25. Count and Count Index =======================================
+Overview of count parameter
+
+Count parameter on resources can simplify configurations and let you scale resources by simply "incrementing a number"
+
+Let assume you need to create a 2 ec2 instances. once of the approach is you need to separate 2 resource blocks for aws instances.
+
+==========
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+
+resource "aws_instance" "web1" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+}
+==========
+if you want 10 instances you copy and paste is tedious task and code length also increase.
+
+https://www.terraform.io/docs/language/meta-arguments/count.html
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+  count = 10
+}
+
+
+=========== ec2.tf file using count=2 ===============
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~>3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  count = 2                     # create 2 similar instances
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+===================================================
+terraform plan
+
+# aws_instance.web[0] will be created
+# aws_instance.web[1] will be created
+
+simply specify count value and the resource can scale accordingly.
+
+================================= Index ======================================
+Understand challenges with count
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user
+
+
+with the below code , terraform will create 5 IAM users . But problem all will have same name
+
+resource "aws_iam_user" "lb" {
+  count = 5
+  name = "loadbalancer"
+  path = "/system/"
+ 
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+
+
+EX:
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  count = 5
+  name = "loadbalancer"
+  path = "/system/"
+ 
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+===================
+-->terraform apply
+
+first it create user "loadbalancer" 
+2nd it tries to create user "loadbalancer" but that user already present hennce its fail.
+
+│ Error: Error creating IAM User loadbalancer: EntityAlreadyExists: User with name loadbalancer already exists.
+│       status code: 409, request id: 4104d827-e2df-467e-b608-f3bb16282ab8
+│
+│   on iam-11.tf line 19, in resource "aws_iam_user" "lb":
+│   19: resource "aws_iam_user" "lb" {
+
+Scenario:
+
+If you create 5 ec2 instance but 5 instances having same name . there is no identification to connect because all having same name.
+
+https://www.terraform.io/docs/language/meta-arguments/count.html
+
+count.index — The distinct index number (starting with 0) corresponding to this instance.
+
+
+Ex:
+
+
+resource "aws_iam_user" "lb" {
+  count = 5
+  name = "loadbalancer.${count.index}"
+  path = "/system/"
+ 
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+
+======== IAM.tf ============
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.37.0"
+    }
+  }
+}
+
+# for authentication of aws  #
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  count = 5
+  name = "loadbalancer${count.index}"   ####loadbalancer0 ----loadbalancer4 # name = "loadbalancer.${count.index}" 
+  path = "/system/"
+}
+==============================
+creates 5 IAM users 
+
+loadbalancer0
+-
+-
+-
+loadbalancer4
+=======================
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  count = 2
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "loadbalancer${count.index}"
+  }
+}
+
+------>
+count=2 
+index[0]
+index[1]
+
+       + "Name" = "loadbalancer0"
+       + "Name" = "loadbalancer1"
+
+===========***** UNDERSTAND CHALLENGE WITH DEFAULT COUNT INDEX ************===========
+
+Having username like loadbalancer0,loadbalancer1 not always suitable.
+
+better name like "dev-loadbalancer","stage-loadbalancer", "prod-loadbalancer"
+count.index can help such scenarios as well.
+============
+var.tf
+
+variable "names" {
+  type = list
+  default = ["dev-loadbalancer","stage-loadbalancer", "prod-loadbalancer"]
+}
+
+========== Create IAM user with specific names ================
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_iam_user" "lb" {
+  count = 3
+  name = var.names[count.index]
+  path = "/system/"
+}
+
+  variable "names" {
+   type = list
+   default = ["dev-loadbalancer","stage-loadbalancer","prod-loadbalancer"]
+  }
+  
+========
+-->Note:
+ You can specify in 1 .tf file  all including variable or use different .tf file for variable.
+ 
+->var.tf
+
+  variable "names" {
+   type = list
+   default = ["dev-loadbalancer","stage-loadbalancer","prod-loadbalancer"]
+  }
+ 
+=====
+terraform apply
+
+O/P:
+will get dev-loadbalancer,stage-loadbalancer, prod-loadbalancer user names in IAM created.
+
+====================== 26. Conditional Expressions =============================
+https://www.terraform.io/docs/configuration/expressions.html
+
+https://www.terraform.io/docs/language/expressions/conditionals.html
+
+A conditional expression uses the value of a bool expression to select one of two values.
+
+The syntax of a conditional expression is as follows:
+
+condition ? true_val : false_val
+===================
+
+Conditional Expressions
+
+SYNTAX:
+
+->condition ? true_val : false_val 
+ 
+ true ? 1 : 0
+ (if its true it creates 1 ec2 instance otherwise nothing 0)
+ 
+ 
+#if var.istest = true it crates t2.micro if var.istest = false creates t2.large 
+#count == var.istest == true ? 1 : 0 (1 ec2instance)
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+#    you can write specific var.tf file as well   #
+variable "istest" {}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+  count == var.istest == true ? 1 : 0
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.large"
+  count == var.istest == false ? 1 : 0
+}
+
+========================
+->terraform.tfvars
+
+istest = true 
+
+====================
+->
+  instance_type = "t2.micro"
+  count == var.istest == true ? 1 : 0
+
+-> terraform plan 
+istest = true it creates t2.micro instance true ? 1 : 0 (1:0) if its true it creates 1 ec2 instance.
+
+case2:
+====================
+
+->terraform.tfvars
+
+istest = false 
+====================
+->
+  instance_type = "t2.large"
+  count == var.istest == false ? 3 : 0
+  
+it creats 3 t2.large ece isntance 
+istest = false it creates 3 t2.large instances.
+
+====================================== 27. Local Values ===========================================
+https://www.terraform.io/docs/language/values/locals.html
+A local value assigns a name to an expression, so you can use it multiple times within a module without repeating it.
+
+local {
+  common_tags = {
+    service_name = "forum"
+    owner        = "Community Team"
+    name         = "Hello world"
+  }
+}
+
+resource "aws_instance" "web" {
+   ami = "ami-0742b4e673072066f"
+   instance_type = "t2.micro"
+   tags = local.common_tags
+}
+
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-1a"
+  size              = 8
+  tags = local.common_tags
+}
+   
+
+
+Declaring a Local Value
+A set of related local values can be declared together in a single locals block:
+
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
+================================
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
+}
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
+
+======================
+Using Local Values
+Once a local value is declared, you can reference it in expressions as local.<NAME>.
+
+Note: Local values are created by a locals block (plural), but you reference them as attributes on an object named local (singular). Make sure to leave off the "s" when referencing a local value!
+
+resource "aws_instance" "example" {
+  # ...
+
+  tags = local.common_tags
+}
+
+========
+When To Use Local Values
+Local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration, but if overused they can also make a configuration hard to read by future maintainers by hiding the actual values used.
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume
+
+ec2_instance and ebs both support tags
+any resource we create it inherit those tags. otherwise you have to provide individually. 
+
+
+EX:
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+# declaring loacal values
+
+locals {
+  common_tags = {
+    service_name = "forum"
+    owner        = "Community Team"
+    name         = "Hello world"
+  }
+}
+
+resource "aws_instance" "web" {
+   ami = "ami-0742b4e673072066f"
+   instance_type = "t2.micro"
+   tags = local.common_tags
+}
+
+resource "aws_instance" "web1" {
+   ami = "ami-0742b4e673072066f"
+   instance_type = "t2.nano"
+   tags = local.common_tags
+}
+
+
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-1a"
+  size              = 8
+  tags = local.common_tags
+}
+
+O/P:
+terraform plan
+
+instance_type                = "t2.micro"
+      + tags                         = {
+          + "owner"        = "Community Team"
+          + "service_name" = "forum"
+          +  "name"        = "Hello world"
+
+instance_type                = "t2.nano"
+      + tags                         = {
+          + "owner"        = "Community Team"
+          + "service_name" = "forum"
+          +  "name"        = "Hello world"
+		  
+check O/P in ec2 console tags
+
+
+======local values support for expression =======
+used for multiple usecases like having condional expressions.
+
+SYNTAX:
+
+->condition ? true_val : false_val 
+ 
+ true ? 1 : 0
+ (if its true it creates 1 ec2 instance otherwise nothing 0)
+ 
+ 
+locals {
+  name_prefix = "$(var.name != "" ? var.name : var.default}"
+}
+
+--> Important pointers for local values
+
+local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration.
+
+If overused they can also make config hard to read by future maintainers by hiding actual values used.
+
+Use local values only in modernisation in situation where single value or result is used in many place and that value is likey to be changed in future.
+
+
+================================= 28. Terraform Functions ================================
+https://www.terraform.io/docs/language/functions/index.html
+https://www.terraform.io/docs/language/functions/
+
+element:
+-------
+element retrieves a single element from a list.
+ex:
+element(list, index)
+
+->element(["a", "b", "c"], 1)
+b
+
+element(["a", "b", "c"], 3)
+a
+
+index:
+------
+index finds the element index for a given value in a list.
+
+index(list, value)
+-> index(["a", "b", "c"], "b")
+1
+
+
+
+length:
+-------
+length determines the length of a given list, map, or string.
+
+> length([])
+0
+> length(["a", "b"])
+2
+> length({"a" = "b"})
+1
+> length("hello")
+5
+
+lookup Function:
+---------------
+lookup retrieves the value of a single element from a map, given its key. 
+If the given key does not exist, the given default value is returned instead.
+
+lookup(map, key, default)
+
+lookup ({a="ay",b="by"},"a",default)
+O/p:
+ay
+
+lookup ({a="ay",b="by"},"a")
+ay
+
+lookup ({a="ay",b="by"},"c","default-vnd")
+If no key is matched with map it display default value (lastone)
+
+default-vnd
+
+lookup ({})
+
+
+
+ex:
+
+variable "region" {
+  aws_region = us-east-1
+}
+   
+variable "ami" {
+  type = map 
+  default = {
+  us-east-1 = "ami-048f6ed62451373d9"
+  us-west-1 = "ami-0affa0c1e0ada22b4"
+  us-west-2 = "ami-001628438d5d7d524"
+   }
+}
+
+variable "tags" {
+  type = list 
+  default = ["first ec2", "second ec2"]
+}
+  
+
+resource "aws_instance" "web" {
+  count = 2
+  ami           = lookup(var.ami,var.region)      ###(map,key,default) here map is ami , key -> not specified default -> region
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = element(var.tags,count.index)
+  }
+}
+
+
+============================= ec2.tf using functions ======================
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+locals {
+  time = formatdate("DD MMM YYYY hh:mm ZZZ",timestamp())
+}
+
+
+# define variables
+
+variable "region" {
+  default = "us-east-1"
+}
+
+variable "ami" {
+  type = map
+  default = {
+    us-east-1 = "ami-048f6ed62451373d9"
+    us-west-1 = "ami-0affa0c1e0ada22b4"
+    us-west-2 = "ami-001628438d5d7d524"
+   }
+}
+
+variable "tags" {
+  type = list
+  default = ["first ec2", "second ec2"]
+}
+
+resource "aws_instance" "app-web" {
+  count = 2                            # creates 2 ec2 instances
+  ami           = lookup(var.ami,var.region) ###(map,key,default) here map is ami , key ->not specified ,default -> region
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = element(var.tags,count.index)
+  }
+}
+
+output "timestamp" {
+  value       = local.time
+} 
+
+=============================================================
+O/p:
+
+Outputs:
+
+timestamp = "29 Apr 2021 13:19 UTC"
+
+-->functions used:
+
+element
+lookup
+count
+timestamp
+formatdate
+
+
+==================================== 29. Data Sources ===========================================
+https://www.terraform.io/docs/language/data-sources/index.html
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
+
+Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration.
+
+Using Data Sources
+A data source is accessed via a special kind of resource known as a data resource, declared using a data block:
+
+data "aws_ami" "example" {
+  most_recent = true
+
+  owners = ["self"]
+  tags = {
+    Name   = "app-server"
+    Tested = "true"
+  }
+}
+
+=======================
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
+
+
+data "aws_ami" "example" {
+  most_recent = true
+  owners           = ["amazon"]
+  filter {
+    name   = "virtualization-type"
+    values = ["amzn2-ami-hvm"]
+  }
+}
+
+=============
+Argument Reference
+owners - (Required) List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, self (the current account), or an AWS owner alias (e.g. amazon, aws-marketplace, microsoft).
+
+block body (between { and }) are query constraints defined by the data source. Most arguments in this section depend on the data source, and indeed in this example most_recent, owners and tags are all arguments defined specifically for the aws_ami data source.
+
+https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:
+
+-> Go to community ami
+ami type: 
+
+amzn2-ami-hvm-2.0.20210421.0-x86_64-gp2 - ami-048f6ed62451373d9
+
+===================================
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+data "aws_ami" "web" {
+  most_recent = true
+  owners           = ["amazon"]
+  filter {
+    name   = "virtualization-type"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.web.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+============================30. Debugging in Terraform ======================
+https://www.terraform.io/docs/internals/debugging.html
+https://www.terraform.io/docs/cli/config/environment-variables.html
+
+
+Terraform has detailed logs which can be enabled by setting the TF_LOG environment variable to any value. 
+This will cause detailed logs to appear on stderr.
+
+You can set TF_LOG to one of the log levels TRACE, DEBUG, INFO, WARN or ERROR to change the verbosity of the logs.
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+# Configure the AWS Provider #
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.web.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+================
+In linux
+
+export TF_LOG=TRACE
+
+->terraform plan
+
+(after enabling the logs = TRACE )we will get more logs compared to previous default logs (without TF_LOG enbled)
+it allow you to tell the exact process or any issues ..
+
+the issues you might be facing may be its binary or any other aspect.
+if things are not working , may you want to file a bug report this is sth you have expected to share.
+
+TF_LOG
+Enables detailed logs to appear on stderr which is useful for debugging. For example:
+
+export TF_LOG=trace
+
+To disable, either unset it, or set it to off. For example:
+
+	export TF_LOG=off
+
+
+TF_LOG_PATH
+	This specifies where the log should persist its output to. Note that even when TF_LOG_PATH is set, TF_LOG must be set in order for any logging to be enabled. 
+
+For example, to always write the log to the directory you're currently running terraform from:
+
+
+--> This log can be store in a specific file
+	export TF_LOG=trace
+	export TF_LOG_PATH=/tmp/terraform.log
+
+->terraform plan 
+you will get all trace and associate logs.
+
+
+IMPORTANT POINTERS:
+	TRACE is the most verbose and its the default if "TF_LOG" is set to sth otherthan log level.
+	TO persist logged output you can set TF_LOG_PATH in order to force the logs always be assigned to a specific file when logging is enabled.
+
+======================================31. Terraform Format ===============================
+https://www.terraform.io/docs/cli/commands/fmt.html
+
+Importance of Readability
+
+anyone who is into programming knows the importance of formatting the code for readability.
+
+terraform fmt command is used to rewrite terraform configuration files to take care of overall formatting.
+
+
+-> terraform fmt
+
+EX:
+-----> before formatting <------
+
+terraform {
+  required_providers {
+    aws        = {
+    source = "hashicorp/aws"
+    version    = "3.7"
+    }
+  }
+}
+provider "aws" {
+  region       = "us-east-1"
+  access_key      = "AKIAYERGXHIW35I5NTNC"
+  secret_key           = "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"
+}
+
+-----> after formatting using "terraform fmt" <-----
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+======================== 32. Validating Terraform Configuration Files ======================
+https://www.terraform.io/docs/cli/commands/validate.html
+
+--> terraform validate
+
+Primarily check whether a configuration is syntactically valid.
+
+It can check various aspects including "unsupported arguments , undeclared variables" and others.
+
+Ex:
+validation success code
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+==
+
+-->
+validate:
+
+terraform validate
+Success! The configuration is valid.
+
+
+-----------> mention unsupported arguments and check "terraform validate"
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+  comapany      = "gspann technologies"  # unsupported argument mentioned here
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+==
+
+--->
+->terraform fmt
+
+	terraform validate
+
+│ Error: Unsupported argument
+│
+│   on validate.tf line 19, in resource "aws_instance" "web":
+│   19:   comapany      = "gspann technologies"
+│
+│ An argument named "comapany" is not expected here.
+
+You can get these errror while executing "terraform plan" as well
+
+	terraform plan
+╷
+│ Error: Unsupported argument
+│
+│   on validate.tf line 19, in resource "aws_instance" "web":
+│   19:   comapany      = "gspann technologies"
+│
+│ An argument named "comapany" is not expected here.
+
+
+======================= undeclared input variable ===================
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = var.instancetype
+  comapany      = "gspann technologies"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+=======================
+	terraform validate or terraform plan
+Same validation happens on above 2 commands.
+
+here   instance_type = var.instancetype
+variable of instancetype not mentioned so gettinng │ Error: Reference to undeclared input variable
+
+
+│ Error: Reference to undeclared input variable
+│
+│   on validate.tf line 18, in resource "aws_instance" "web":
+│   18:   instance_type = var.instancetype
+│
+│ An input variable with the name "instancetype" has not been declared. This variable can be declared with a variable "instancetype" {} block.
+
+
+=========================== 33. Load Order & Semantics ==========================
+
+It helps to write cleaner code whenever you writing a code in production.
+
+
+https://www.terraform.io/docs/configuration-0-11/load.html
+
+When invoking any command that loads the Terraform configuration, 
+
+->Terraform loads all configuration files within the directory specified in alphabetical order.
+
+->The files loaded must end in either .tf or .tf.json to specify the format that is in use. 
+Otherwise, the files are ignored. Multiple file formats can be present in the same directory; it is okay to have one Terraform configuration file be Terraform syntax and another be JSON.
+
+terraform-dir 
+
+app.tf
+ec2.tf
+sg.tf
+iam.tf 
+providers.tf
+
+--> terraform plan
+
+Generally if you can mention all configuration details we can mention in 1 file main.tf file . But its not a good approach in "Production". 
+
+-> to write entire data in 1 file its difficult locate the bug and time taking process and the code length we see entire 1 file is big.
+-> If any requirement to add sth you can check the entire code and add that config inside it.
+
+-> So you can split these single "main.tf or any single file" in to multiple files. it looks and debug that very easy and locate and add new resources take less time.
+
+
+EX:
+---->
+1 main.tf or .tf file we are mentioning all data (variable, ec2 resource, iam resource ,provider  ) etc.
+
+main.tf
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+# create variable as name 
+
+variable "iam-user" {
+   default = "vinod"
+}
+
+
+
+# IAM USER resource block
+
+resource "aws_iam_user" "lb" {
+  name = var.iam-user
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+
+# Ec2 instance create resource block
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+==============================
+terraform fmt
+terrform validate or terraform plan
+
+INSTED OF WRING ENTIRE DATA IN 1 FILE WE HAVE TO KEEP THAT DATA IN SPLIT FORM FOR EASY TO LOCATE BUGS AND UNDERSTAND THE CONFIGUTATION EASILY.
+
+
+	provider.tf
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+	var.tf
+
+# create variable as name
+
+variable "iam-user" {
+   default = "vinod"
+}
+
+	ec2.tf
+
+# Ec2 instance create resource block
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+	iam.tf
+
+# IAM USER resource block
+
+resource "aws_iam_user" "lb" {
+  name = var.iam-user
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+
+=============================== 34. Dynamic Blocks ====================================
+
+======== Understanding the challenge========
+
+In many of the usecases , there are repeated nested blocks that needs to defined.
+This can lead to a long code and it can be difficult to manage in long time.
+
+
+https://www.terraform.io/docs/language/expressions/dynamic-blocks.html
+https://blog.boltops.com/2020/10/05/terraform-hcl-loops-with-dynamic-block
+
+https://www.terraform.io/docs/language/expressions/types.html
+
+
+Before dynamic block :
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+
+ingress: inbound rules
+egress : outbound rules
+
+----->
+resource "aws_security_group" "simple" {
+  name        = "demo-simple"
+  description = "demo-simple"
+
+  ingress {
+    description = "description 0"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "description 1"
+    from_port   = 81
+    to_port     = 81
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "description 1"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+The code creates a security group with 3 security group rules. if you have to set 40 ingress rules you need to mention all so code length will increase for that "dyanamic values" came to picture.
+
+Note:
+
+all of these can be combined together as single dyanamic block.
+
+The ingress attribute is repeated multiple times with different blocks of code. Some resource attributes can be assigned with this configuration block DSL syntax.
+
+=========== Dynamic Nested Block Intro ======
+
+Dynamic nested blocks can be used to assign multiple attributes. Here’s the first example re-written with a dynamic block.
+
+locals {
+  ports = [80, 81]
+}
+resource "aws_security_group" "dynamic" {
+  name        = "demo-dynamic"
+  description = "demo-dynamic"
+
+  dynamic "ingress" {
+    for_each = local.ports
+    content {
+      description = "description ${ingress.key}"
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+========= OR ===========
+
+============================
+https://medium.com/@muhammet.arslan/long-live-terraform-and-0-12-60cda41f3eb4
+https://blog.boltops.com/2020/10/05/terraform-hcl-loops-with-dynamic-block#:~:text=The%20code%20creates%20a%20security,to%20see%20terraform%20apply%20results.
+
+Dynamic block allows us to dynamically construct repeatable nested blocks which is supported inside resource,data,provisioner,provider blocks.
+
+resource "aws_security_group" "vault-dynamic-sg" {
+  name        = "vault"
+  description = "Ingress for Vault"
+
+  dynamic "ingress" {
+    for_each = var.ingress_ports
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+=============== terraform code ==================
+
+
+	variables.tf
+
+variable "ingress_ports" {
+  type        = list(number)
+  description = "list of ingress ports"
+  default     = [8200, 8201,8080]
+}
+
+
+	provider.tf
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+======================
+
+	resource.tf (without iterator)
+
+resource "aws_security_group" "vault-dynamic-sg" {
+  name        = "vault"
+  description = "Ingress for Vault"
+
+  dynamic "ingress" {
+    for_each = var.ingress_ports
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+Note:
+without iterator it should    (from_port   = ingress.value)  (ingress) -> lable of dynamic block
+
+ingress.value : value associated for the current element for_each element.
+  default     = [8200, 8201,8080]
+
+If you specify iterator (from_port   = port.value)
+
+======== OR ===========
+ITERATOR:
+
+(optional) sets the name of a temporary variable that represents the current elemnet of complex value.
+
+If omitted the name of variable defaults to the label of dynamic block ("ingres in example")
+
+
+
+	resource.tf (with iterator)
+
+resource "aws_security_group" "dynamicsg" {
+  name        = "test-sg-vault"
+  description = "Ingress for Vault"
+  
+  dynamic "ingress" {
+    iterator = port
+    for_each = var.sg_ports
+    content {
+      from_port   = port.value
+      to_port     = port.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+
+================ terraform apply ==========
+
+O/P
+
+  + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 8080
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 8080
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 8200
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 8200
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 8201
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 8201
+			  
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+
+default : SG
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.main.cidr_block]
+    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+========= Dynamci (nested DG) ===========
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+variable "ingress_ports" {
+  type        = list(number)
+  description = "list of ingress ports"
+  default     = [8200, 8201,8080]
+}
+
+
+resource "aws_security_group" "dynamicsg" {
+  name        = "test-sg-vault"
+  description = "Ingress for Vault"
+
+  dynamic "ingress" {
+    iterator = port
+    for_each = var.ingress_ports
+    content {
+      from_port   = port.value
+      to_port     = port.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+  dynamic "egress" {
+    #iterator = port
+    for_each = var.ingress_ports
+    content {
+      from_port   = egress.value
+      to_port     = egress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }  
+}
+====================================== 35. Tainting Resources =====================================
+https://www.terraform.io/docs/cli/commands/taint.html
+
+You have created a new resource via terraform 
+
+Users have made a lot of changes (both infrastructure and inside the server)
+
+Two ways to deal with this : Import changes to terraform / delete & recreate the resource.
+
+
+terraform taint :
+  Manually marks terraform-managed resource as tainted, forcing it to be destroyed and recreated on the next apply.
+  
+  Terraform -------> taint resource ---> new resource
+==========
+
+The terraform taint command manually marks a Terraform-managed resource as tainted, forcing it to be destroyed and recreated on the next apply. 
+
+This command will not modify infrastructure, but does modify the state file in order to mark a resource as tainted. Once a resource is marked as tainted, the next plan will show that the resource will be destroyed and recreated and the next apply will implement this change.
+
+Create instance and modify manually after terraform apply 
+
+
+  # aws_instance.web will be updated in-place
+  ~ resource "aws_instance" "web" {
+        id                           = "i-09f1d56d65d9631ec"
+      ~ instance_type                = "t2.nano" -> "t2.micro"
+      ~ tags                         = {
+          ~ "Name" = "HelloWorld-vnd123" -> "HelloWorld-vnd"
+		
+If someone changes details manually instead of destroy and apply you just taint that changed resource and apply (changes reflect according to terraform.tf file )
+
+terraform taint 
+
+  # aws_instance.web is tainted, so must be replaced
+
+============ terraform file ==============  
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+  
+# Ec2 instance create resource block
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld-vnd"
+  }
+}
+
+
+=============
+change name of instance tag and some manual changes
+
+terraform plan
+
+instead of destroy and recreating the instance just you taint that resource and apply it next time
+
+	terraform taint aws_instance.web
+check terraform.tfstate file that resource was tainted
+
+	terraform apply 
+changes to prev state as in .tf file.
+
+
+
+============================== 37. Terraform Graph =============================
+http://www.graphviz.org/
+https://www.terraform.io/docs/cli/commands/graph.html
+
+terraform graph command is used to generate visual representation of either configuration or execution plan.
+
+the o/p terraform graph is in DOT format , which can easily converted in to image
+
+Graph is having 3 resource (ec2,eip,sg), eip associated with ec2 instance only it apply once ec2 instance created and SG is depends on eip is created.(one depends on other).
+
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_instance" "web" {
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+
+resource "aws_eip" "lb" {
+  instance = aws_instance.web.id
+  vpc      = true
+}
+
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["$(aws_eip.lb.private_ip)/32"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+===============
+execute :
+
+	terraform graph > graph.dot
+
+graph.dot file like this
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.lb (expand)" [label = "aws_eip.lb", shape = "box"]
+		"[root] aws_iam_user.lb (orphan)" [label = "aws_iam_user.lb", shape = "box"]
+		"[root] aws_instance.web (expand)" [label = "aws_instance.web", shape = "box"]
+		"[root] aws_security_group.allow_tls (expand)" [label = "aws_security_group.allow_tls", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] aws_eip.lb (expand)" -> "[root] aws_instance.web (expand)"
+		"[root] aws_iam_user.lb (orphan)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.web (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_eip.lb (expand)"(close)"
+	}
+}
+
+if you want to convert these to image you need an additional tool (ie graphviz)
+quickly for visualisation and conversion aspect.
+
+
+Linux vm: installed grpahviz
+
+install graphviz and paste graph.dot to instance covernt .dot to image file
+
+cat graph.dot | dot -Tsvg > graph.svg
+
+cat graph.svg
+
+copy this and create new file called graph.svg and paste 
+
+from windows explorer we see graph.svg available
+
+open that graph.svg with chrome.
+
+OR
+
+terraform graph | dot -Tsvg > graph.svg
+
+
+====================================== 38. Saving Terraform Plan to File =============================
+https://www.terraform.io/docs/cli/commands/plan.html
+
+-> The generated terraform plan can be saved to a specific path
+-> This plan can then be used with terraform applyy to be certain that only "changes shown in this plan are applied".
+
+-out=path 
+
+Ex:
+Suppose you have plan then save it to demo path. next time you have changed the .tf file like instance_type form t2.micro t2.large.
+
+then try to apply terraform apply it can't execute . for that you have to execute "terraform apply demopath" then only changes in your demopath are applied irrespective of any change/modification did in .tf file.
+
+step1:
+	save.tf
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+step2:
+	terraform plan -out=demopath
+
+step3: 
+	change any in .tf file like t2.micro to t2.large.
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.large"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+
+step3:
+	terraform apply (wont work)
+	terraform apply demopath (will work)
+
+
+
+- The path to save the generated execution plan. This plan can then be used with terraform apply to be certain that only the changes shown in this plan are applied. Read the warning on saved plans below.
+
+
+============================================
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+====================================
+save this plan 
+
+terraform apply "devops-vnd"
+
+after few days terr
+
+
+
+
+
+
+
+
+
+
+
+================================== 39. Terraform Output ==================================
+https://www.terraform.io/docs/cli/commands/output.html
+https://www.terraform.io/docs/language/values/outputs.html
+
+The terraform output command is used to extract the value of an output variable from the state file.
+
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  name = "iamuser.${count.index}"
+  path = "/system/"
+  count = 3
+}
+
+output "iam_users-vnd" {
+  value = aws_iam_user.lb[*].name
+}
+
+output "iam_arn-vnd" {
+  value = aws_iam_user.lb[*].arn
+}
+==============================
+attributes:
+
+Attributes Reference
+In addition to all arguments above, the following attributes are exported:
+
+arn - The ARN assigned by AWS for this user.
+name - The user's name.
+tags_all - A map of tags assigned to the resource, including those inherited from the provider default_tags configuration block.
+unique_id - The unique ID assigned by AWS.
+
+
+Here   value = aws_iam_user.lb[*].arn
+* -> splot expresstion
+
+o/p attribute associated with name for all iam users and arn.
+
+
+	terraform apply 
+
+Outputs:
+
+iam_arn-vnd = [
+  "arn:aws:iam::559500704301:user/system/iamuser.0",
+  "arn:aws:iam::559500704301:user/system/iamuser.1",
+  "arn:aws:iam::559500704301:user/system/iamuser.2",
+]
+iam_users-vnd = [
+  "iamuser.0",
+  "iamuser.1",
+  "iamuser.2",
+  
+  
+This is 1 approach to fetching (o/p)details in later state. 
+
+====>2nd inspect(open) terraform.tfstate file 
+
+  "outputs": {
+    "iam_arn-vnd": {
+      "value": [
+        "arn:aws:iam::559500704301:user/system/iamuser.0",
+        "arn:aws:iam::559500704301:user/system/iamuser.1",
+        "arn:aws:iam::559500704301:user/system/iamuser.2"
+
+    "iam_users-vnd": {
+      "value": [
+        "iamuser.0",
+        "iamuser.1",
+        "iamuser.2"
+
+=====> 3rd approach is 
+
+terraform output iam_users-vnd
+
+terraform output iam_arn-vnd
+
+
+================================ 40. Terraform Settings ========================
+A special terraform configuration block type is used to configure some behaviours of itself 
+
+such as requiring a minimum terraform version to apply your configuration.
+
+terraform setting gathered together into terraform blocks.
+
+terraform {
+#.......
+
+
+}
+
+==========
+https://www.terraform.io/docs/language/settings/index.html
+
+SETTING1: 
+
+TERRAFORM Versioning
+-------------------------------
+The "required_version" setting accepts a version constraint string, which specifies which versions of Terraform can be used with your configuration.
+
+If the running version of Terraform doesn't match the constraints specified, Terraform will produce an error and exit without taking any further actions.
+
+
+terraform {
+   required_version = ">0.12.0" 
+}
+
+
+if your terraform version morethan 0.12.0 it executes the terraform fns. otherwise it shows an error.
+====================
+Ex:
+
+currently my terraform version is 
+
+terraform -version
+Terraform v0.15.0
+
+below I am providing <0.12.0 (lessthan .12 terraform version only execute) here 0.15.0 version(terraform we using so terrform will fail)
+
+few codes are specifically designed for specific versions.
+=========================
+# Provider block
+terraform {
+  required_version = "<0.12.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+resource "aws_iam_user" "lb" {
+  name = "iamuser.${count.index}"
+  path = "/system/"
+  count = 3
+}
+
+
+======================
+terraform plan
+
+terraform plan
+╷
+│ Error: Unsupported Terraform Core version
+│
+│   on tfsettings.tf line 3, in terraform:
+│    3:   required_version = "<0.12.0"
+│
+│ This configuration does not support Terraform version 0.15.0. To proceed, either choose another supported Terraform version or update this version constraint.
+│ Version constraints are normally set for good reason,
+
+only lessthan 0.12 version we can able to perform terraform fns.
+
+
+SETTING2:
+PROVIDER VERSION:
+
+The required_providers block specifies all of the providers required by the current module, mapping each local provider name to a source address and a version constraint.
+
+# Provider block
+terraform {
+  required_version = "<0.12.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+
+================================ 41. Dealing with Large Infrastructure ================================
+
+terraform apply -auto-approve
+
+When you have larger infrastructure , you will face api issue related to API limits for provider.
+
+5EC2
+3RDS
+100SG Rules
+VPC infra
+
+intra.tf 
+
+all resource details in 1 file intra.tf file
+
+terraform plan  --> intra.tf -->terraform plan --> Update state of each resource -->"aws provider" (amount of calls "aws increase)
+
+Issues:
+Increase API calls
+Slow down the operation process
+
+
+whenever you handling terraform you not only have to write .tf files but also you take care other things
+
+1. Swith to smaller config were each can be applied indenpendently.
+
+terraform plan
+
+					5EC2             5EC2           <--ec2.tf <--- terraform plan 
+terraform plan  	3RDS             3RDS           <--rds.tf <--- terraform plan 
+					100SG Rules      100SG Rules    <--sg.tf  <--- terraform plan 
+					VPC infra        VPC infra      <--vpc.tf <--- terraform plan 
+
+intra.tf 
+
+instead of providing all 4 resources in in infra.tf file and we know if we hit "terraform plan" then refresh happens form previous to current for all resources that lead to lot of time.
+
+for that you need to separate it to individual files.
+When you execute terraform plan only for that resource should be refresh at a time others will not refresh at the same time that can lead to save your time.
+
+if you put all in 1 terraform.tf file and created infrastucture . if you made any change to .tf file and execute "terraform plan" it refresh all resources irrespective of changed resource. so it takes lot of time because of execess API calls can hit to aws provider will slowdown the process.
+
+=======
+We can prevent terraform from querying the current state operations like "terraform plan"
+can be achieved with "-refresh=false" flag
+which takes to refresh only updated resources.API calls also reduces.
+
+
+2.Specify the target.
+
+The 
+
+"-target=resource" flag can be used to target specific resource.
+Generally used as a means to operate on isolated portin of very large configurations.
+
+5EC2
+3RDS
+100SG Rules
+VPC infra
+
+intra.tf 
+
+	terraform plan -target=ec2
+It only looks ec2 resource only.
+
+	What is a Terraform module?
+A Terraform module is a set of Terraform configuration files in a single directory. Even a simple configuration consisting of a single directory with one or more .tf files is a module
+
+https://registry.terraform.io/browse/modules
+
+=============================== VPC,SG,EC2 resource ========================
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
+
+##### Security group
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.main.cidr_block]
+    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 65535
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+
+
+# Ec2 instance create resource block
+
+resource "aws_instance" "web" {
+  ami           = "ami-0742b4e673072066f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld-vnd"
+  }
+}
+
+=====
+terraform plan
+-> it refresh all resources.
+
+if you add sth 
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.main.cidr_block]
+    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+	
+terraform plan 
+
+it refresh all resources again any time you execute plan.
+
+assume 100 resoruce you create every change it refresh the 100 resources .it makes increase API call to aws provider and slow down the process. 
+so only that changed resources refresh it takes less time to refresh.
+
+
+EX:
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform plan
+aws_security_group.allow_tls: Refreshing state... [id=sg-0ffb41318c65a19ca]
+aws_instance.web: Refreshing state... [id=i-0300eb68b69926dbd]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_security_group.allow_tls will be updated in-place
+  ~ resource "aws_security_group" "allow_tls" {
+        id                     = "sg-0ffb41318c65a19ca"
+      ~ ingress                = [
+=====================
+
+It refresh only that specific resources using below command
+
+	terraform plan -target=aws_security_group.allow_tls
+aws_security_group.allow_tls: Refreshing state... [id=sg-0ffb41318c65a19ca]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_security_group.allow_tls will be updated in-place
+  ~ resource "aws_security_group" "allow_tls" {
+        id                     = "sg-0ffb41318c65a19ca"
+      ~ ingress                = [
+ 
+
+	terraform plan -refresh=false
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform plan -refresh=false
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_security_group.allow_tls will be updated in-place
+  ~ resource "aws_security_group" "allow_tls" {
+        id                     = "sg-0ffb41318c65a19ca"
+      ~ ingress                = [
+          + {
+              + cidr_blocks      = []
+              + description      = "TLS from VPC"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+            # (1 unchanged element hidden)
+        ]
+        name                   = "allow_tls"
+        tags                   = {
+            "Name" = "allow_tls"
+        }
+        # (6 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+It will not refresh all resources . It refresh only that updated resources so it takes less api calls and faster if you use infra.tf file (having all resources takes place)
+
+
+-====== lets update ec2 instance type form t2.micro to t2.large============
+
+	terraform plan -refresh=false
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_instance.web will be updated in-place
+  ~ resource "aws_instance" "web" {
+        id                           = "i-0300eb68b69926dbd"
+      ~ instance_type                = "t2.micro" -> "t2.large"
+        tags                         = {
+            "Name" = "HelloWorld-vnd"
+        }
+        # (26 unchanged attributes hidden)
+
+
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # aws_security_group.allow_tls will be updated in-place
+  ~ resource "aws_security_group" "allow_tls" {
+        id                     = "sg-0ffb41318c65a19ca"
+      ~ ingress                = [
+          + {
+              + cidr_blocks      = []
+              + description      = "TLS from VPC"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+            # (1 unchanged element hidden)
+        ]
+        name                   = "allow_tls"
+        tags                   = {
+            "Name" = "allow_tls"
+			
+It refresh only when modification is done for that particular resource irrespective of all resources.
+
+You can refresh only specific resource 
+
+
+	terraform plan -refresh=false -target=aws_instance.web
+Terraform will perform the following actions:
+
+  # aws_instance.web will be updated in-place
+  ~ resource "aws_instance" "web" {
+        id                           = "i-0300eb68b69926dbd"
+      ~ instance_type                = "t2.micro" -> "t2.large"
+        tags                         = {
+            "Name" = "HelloWorld-vnd"
+        }
+
+==================================        42. Zipmap Function           ===========================
+https://www.terraform.io/docs/language/functions/zipmap.html
+
+zipmap constructs a map from a list of keys and a corresponding list of values.
+
+	zipmap(keyslist, valueslist)
+
+Both keyslist and valueslist must be of the same length. keyslist must be a list of strings, while valueslist can be a list of any type.
+
+Each pair of elements with the same index from the two lists will be used as the key and value of an element in the resulting map
+
+
+Check:
+
+C:\Users\vinod.chenna\Desktop\terraform_0.15.0_windows_amd64>terraform console
+
+	terraform console 
+to enter into terraform console to practice commands 
+
+> zipmap (["a","b"],[1,2])
+{
+  "a" = 1
+  "b" = 2
+}
+
+=============== 
+
+zipmap (["vinod","vani"],[chenna,chenna])
+
+Error: Invalid reference
+│
+│   on <console-input> line 1:
+│   (source code not available)
+│
+│ A reference to a resource type must be followed by at least one attribute access, specifying the resource name.
+
+
+zipmap (["vinod","vani"],["chenna","chenna"])
+O/p:
+{
+  "vani" = "chenna"
+  "vinod" = "chenna"
+}
+
+================
+Ex:
+
+pine apple        +   yellow                               pineapple=yellow
+strawberry        +   red             ------->zipmap ----> strawberry=red 
+orange            +   orange                               orange=orange
+
+List of keys          List of values
+
+
+
+SAMPLE USE-CASE:
+
+	You are creatin multiple IAM ROles.
+	You need output which contains direct mapping of IAM name and arns
+
+zipmap ={
+   "demo-user.0" = "arn:aws:iam:: 015786867:user/system/demo-user.0"
+   "demo-user.1" = "arn:aws:iam:: 015786867:user/system/demo-user.1"
+}
+
+
+=============
+
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_iam_user" "lb" {
+  name = "aws-user"
+  path = "/system/"
+  count=3
+}
+
+output "name" {
+  value = aws_iam_user.lb[*].name
+}
+
+output "arn" {
+  value = aws_iam_user.lb[*].arn
+}
+
+
+=============
+	terraform apply
+
+Outputs:
+
+arn = [
+  "arn:aws:iam::559500704301:user/system/iamuser.0",
+  "arn:aws:iam::559500704301:user/system/iamuser.1",
+  "arn:aws:iam::559500704301:user/system/iamuser.2",
+]
+name = [
+  "iamuser.0",
+  "iamuser.1",
+  "iamuser.2",
+  
+ ========================== using ZipMap =================
+ 
+# Provider block
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.7"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAYERGXHIW35I5NTNC"
+  secret_key = "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"
+}
+
+resource "aws_iam_user" "lb" {
+  name = "iamuser.${count.index}"
+  path = "/system/"
+  count=3
+}
+
+output "name" {
+  value = aws_iam_user.lb[*].name
+}
+
+output "arn" {
+  value = aws_iam_user.lb[*].arn
+}
+
+#ZIPMAP
+output "name-arn" {
+  value = zipmap(aws_iam_user.lb[*].name,aws_iam_user.lb[*].arn)
+}
+
++===========
+O/P
+
+terraform apply -auto-approve
+
+Outputs:
+
+Outputs:
+
+arn = [
+  "arn:aws:iam::559500704301:user/system/iamuser.0",
+  "arn:aws:iam::559500704301:user/system/iamuser.1",
+  "arn:aws:iam::559500704301:user/system/iamuser.2",
+]
+name = [
+  "iamuser.0",
+  "iamuser.1",
+  "iamuser.2",
+]
+name-arn = {
+  "iamuser.0" = "arn:aws:iam::559500704301:user/system/iamuser.0"
+  "iamuser.1" = "arn:aws:iam::559500704301:user/system/iamuser.1"
+  "iamuser.2" = "arn:aws:iam::559500704301:user/system/iamuser.2"
+}
+
