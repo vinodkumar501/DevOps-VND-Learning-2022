@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=GcNcJNGvBuw&t=1406s
+
+https://platform9.com/kb/kubernetes/how-to-grant-read-only-access-to-the-kubernetes-dashboard
+
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
+
+
+
+
+
