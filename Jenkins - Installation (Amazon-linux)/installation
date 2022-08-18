@@ -15,11 +15,11 @@ sudo yum install jenkins java-1.8.0-openjdk-devel -y
 (Note: if above fails user below 3 steps)
 
 ==============================================================
-#sudo yum install epel-release -y  
+sudo yum install epel-release -y  
 (or)  
-#sudo amazon-linux-extras install epel   ##( for amazon linux )
-#sudo yum install daemonize -y  
-#sudo yum install jenkins java-1.8.0-openjdk-devel -y 
+sudo amazon-linux-extras install epel   ##( for amazon linux )
+sudo yum install daemonize -y  
+sudo yum install jenkins java-1.8.0-openjdk-devel -y 
 ==============================================================
 
 sudo systemctl daemon-reload
